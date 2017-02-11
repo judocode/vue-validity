@@ -1,4 +1,4 @@
-import { validateModel } from './index'
+import { validateModel } from './validationVm'
 import { getObjectByString } from './utils'
 
 export default {

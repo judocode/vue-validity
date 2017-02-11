@@ -62,3 +62,26 @@ export function removeClass (el, className) {
     el.className = el.className.replace(reg, ' ')
   }
 }
+
+export const constant = c => () => c
+export const buildFromKeys = (keys, fn, keyFn) => keys.reduce((build, key) => {
+  build[keyFn ? keyFn(key) : key] = fn(key)
+  return build
+}, {})
+
+export function isSingleRule (ruleset) {
+  return isObject(ruleset) &&
+         typeof ruleset.message === 'function' &&
+         typeof ruleset.validate === 'function'
+}
+
+export function isObject (val) {
+  return val !== null && typeof val === 'object'
+}
+
+export function isNested (ruleset) {
+  return isObject(ruleset) &&
+         (typeof ruleset.$message === 'undefined' || typeof ruleset.$value === 'undefined')
+}
+
+export const flatten = arr => arr.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), [])

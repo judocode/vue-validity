@@ -1,7 +1,17 @@
 <template>
   <div id="app">
+    <h1>vue-validity</h1>
+    <h4>A simple, powerful and flexible Vue.js validation library.</h4>
+    <ul class="text-left">
+      <li>Model-based validation</li>
+      <li>Automatically adds classes based on input state</li>
+      <li>Programmatically add errors (eg. server-side errors)</li>
+      <li>Add your own translations</li>
+      <li>Create your own custom validations</li>
+      <li>Extend existing validations</li>
+    </ul>
     <form @submit.prevent="submitForm">
-      <h2>Form</h2>
+      <h3>Example form</h3>
       <input type="text" v-model="match.firstName" placeholder="First name" v-validity>
       <error-messages :model="$v.match.firstName"></error-messages>
       <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
@@ -9,7 +19,7 @@
       <hello v-model="match.message"></hello>
       <button type="submit">Submit</button>
       <h5>Validation state:</h5>
-      <pre class="text-left">{{ $v }}</pre>
+      <pre class="text-left">$v: {{ $v }}</pre>
     </form>
   </div>
 </template>
@@ -92,11 +102,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-
-.touched.invalid {
-  border: 1px solid red;
+  margin-top: 30px;
+  font-size: 16px;
 }
 
 .error {
@@ -110,5 +117,16 @@ export default {
 form {
   border: 1px solid #bbb;
   padding: 10px;
+}
+
+input {
+  border-radius: 4px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  outline: 0;
+}
+
+input.touched.invalid {
+  border: 1px solid red;
 }
 </style>
