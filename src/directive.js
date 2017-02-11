@@ -58,16 +58,35 @@ function getValidationModel (binding, vnode) {
     return
   }
 
-  const vmodels = vnode.data.directives.filter((d) => {
-    return d.name === 'model'
-  })
-
-  if (!vmodels.length) {
-    console.warn('v-model must be present on element for class binding and touch to work')
-    return null
+  if (vnode.context.$vChild) {
+    return vnode.context.$v
   }
 
-  const modelName = vmodels[0].expression
+  let modelName = binding.value
+
+  if (!modelName) {
+    const vmodels = vnode.data.directives.filter((d) => {
+      return d.name === 'model'
+    })
+
+    if (!vmodels.length) {
+      const data = vnode.context.$options._parentVnode.data || []
+
+      const directives = data.directives.filter(d => d.name === 'model')
+
+      if (!data.directives.length) {
+        modelName = ''
+      }
+
+      modelName = directives[0].expression
+    } else {
+      modelName = vmodels[0].expression
+    }
+  }
+
+  if (!modelName) {
+    return vnode.context.$v
+  }
 
   return getObjectByString(vnode.context.$v, modelName)
 }

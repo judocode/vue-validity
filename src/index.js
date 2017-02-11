@@ -68,8 +68,11 @@ function setErrorsRecursive (errors) {
 // vm static definition
 const defaultMethods = {
   $validate () {
-    this.setErrors = []
-    setDirtyRecursive.call(this, true)
+    return new Promise((resolve, reject) => {
+      this.setErrors = []
+      setDirtyRecursive.call(this, true)
+      resolve()
+    })
   },
   $reset () {
     this.setErrors = []
@@ -81,14 +84,14 @@ const defaultMethods = {
 }
 
 const defaultComputed = {
-  $invalid () {
+  $valid () {
     if (this.setErrors.length) {
-      return true
+      return false
     }
 
-    return this.dynamicKeys.some(ruleOrNested => {
+    return !this.dynamicKeys.some(ruleOrNested => {
       const val = getValidationValue(this, ruleOrNested)
-      return isNested(val) ? val.$invalid : !val.$value
+      return isNested(val) ? !val.$valid : !val.$value
     })
   },
   $dirty () {
@@ -111,11 +114,15 @@ const defaultComputed = {
     return foundNested
   },
   $error () {
-    return !!(this.$dirty && this.$invalid)
+    return !!(this.$dirty && !this.$valid)
   },
   $errors () {
     if (!this.$error) {
       return []
+    }
+
+    if (this.setErrors.length) {
+      return this.setErrors
     }
 
     const field = this.$data.name
@@ -123,11 +130,19 @@ const defaultComputed = {
     const errors = this.dynamicKeys.map(ruleOrNested => {
       const val = this[ruleOrNested]
 
-      return isNested(val) ? val.$errors : {
+      if (isNested(val)) {
+        return val.$errors
+      }
+
+      if (val.$value) {
+        return null
+      }
+
+      return {
         field: field,
         message: val.$message
       }
-    })
+    }).filter(r => r !== null)
 
     return flatten(errors)
   }
@@ -213,15 +228,22 @@ function getValidationValue (vm, dynamicKey) {
 
 function getValidationRule (rootVm, rule, ruleName, parentVm, prop) {
   return function () {
-    const validatorOutput = rule.validate.call(rootVm, parentVm[prop], parentVm)
+    let flattenOptions = {}
+    if (rule.options) {
+      flattenOptions = rule.options.reduce((result, item) => {
+        result[item.name] = item.value
+        return result
+      }, {})
+    }
+
+    const validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions)
 
     // support cross referencing validators, especially validation groups
     if (isObject(validatorOutput) && validatorOutput.__isValidity) {
       return validatorOutput
     }
 
-    const validatorMessage = rule.message.call(rootVm, prop, parentVm)
-    // const validatorMessage = rule.message.call(rootVm, parentVm[prop], parentVm)
+    const validatorMessage = rule.message.call(rootVm, prop, rule.options)
 
     return {
       $value: !!validatorOutput,
@@ -241,8 +263,25 @@ function getParentValidationRule (rootVm, rules, ruleName, parentVm, prop) {
   if (Array.isArray(rules)) {
     const newRules = {}
     for (let i = 0; i < rules.length; i++) {
-      const rule = rules[i]
-      newRules[rule] = validators[rule]
+      let rule = rules[i]
+      let options = []
+      const optionsIndex = rule.indexOf(':')
+      const hasOptions = optionsIndex !== -1
+
+      if (hasOptions) {
+        options = rule.substr(optionsIndex + 1).split(',')
+        rule = rule.substr(0, optionsIndex)
+      }
+
+      const validatorRule = validators[rule]
+
+      for (let j = 0; j < options.length; j++) {
+        const option = options[j]
+        const validatorOption = validatorRule.options[j]
+        validatorOption.value = option
+      }
+
+      newRules[rule] = validatorRule
     }
 
     rules = newRules

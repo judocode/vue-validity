@@ -1,5 +1,6 @@
 export default {
   required: '{field} is required.',
+  minlength: '{field} should be at least {minlength} chars.',
 
   init (errorMessages) {
     if (!errorMessages) {
@@ -13,14 +14,22 @@ export default {
     }
   },
 
-  getErrorMessage (type, field, value) {
-    const error = this[type]
+  getErrorMessage (type, field, options) {
+    let error = this[type]
 
     if (!error) {
       return null
     }
 
-    return error.replace(new RegExp(/{field}/, 'g'), field)
-                .replace(new RegExp(/{value}/, 'g'), value)
+    error = error.replace(new RegExp(/{field}/, 'g'), field)
+
+    if (options && options.length) {
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i]
+        error = error.replace(new RegExp(`{${option.name}}`, 'g'), option.value)
+      }
+    }
+
+    return error
   }
 }

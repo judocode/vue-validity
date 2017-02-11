@@ -1,7 +1,16 @@
 import Errors from './errorMessages'
 
 export default {
-  validate (value, length) {
+  options: [
+    {
+      name: 'minlength',
+      value: 0
+    }
+  ],
+
+  validate (value, options) {
+    const length = parseInt(options.minlength, 10)
+
     if (Array.isArray(value)) {
       return value.length === 0 || value.length >= length
     }
@@ -11,7 +20,7 @@ export default {
       : value === '' || String(value).length >= length
   },
 
-  message (field, val) {
-    return Errors.getErrorMessage('minlength', field, val)
+  message (field, options) {
+    return Errors.getErrorMessage('minlength', field, options)
   }
 }

@@ -1,14 +1,22 @@
 <template>
   <div id="app">
-    <input type="text" v-model="match.firstName" v-validity>
-    <error-messages :model="$v.match.firstName"></error-messages>
-    <input type="text" v-model="match.lastName" v-validity>
-    <error-messages :model="$v.match.lastName"></error-messages>
-    <pre style="text-align: left;">{{ $v }}</pre>
+    <form @submit.prevent="submitForm">
+      <h2>Form</h2>
+      <input type="text" v-model="match.firstName" placeholder="First name" v-validity>
+      <error-messages :model="$v.match.firstName"></error-messages>
+      <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
+      <error-messages :model="$v.match.lastName"></error-messages>
+      <hello v-model="match.message"></hello>
+      <button type="submit">Submit</button>
+      <h5>Validation state:</h5>
+      <pre class="text-left">{{ $v }}</pre>
+    </form>
   </div>
 </template>
 
 <script>
+
+import Hello from './components/Hello.vue'
 import ErrorMessages from './components/ErrorMessages.vue'
 import required from '../src/validators/required'
 
@@ -19,7 +27,8 @@ export default {
     return {
       match: {
         firstName: null,
-        lastName: null
+        lastName: null,
+        message: '',
       }
     }
   },
@@ -29,26 +38,49 @@ export default {
       return ''
     }
   },
+
+  methods: {
+    submitForm() {
+      this.$v.$validate().then(() => {
+        if (this.$v.$valid) {
+          console.log('valid!')
+        } else {
+          console.log('not valid!')
+        }
+      })
+    }
+  },
+
+  mounted() {
+    this.$v.$setErrors([{
+      field: 'lastName',
+      message: 'fail'
+    }])
+  },
+
   validations: {
     match: {
       firstName: ['required'],
 
       lastName: {
         required: {
-          validate (val) {
+          validate (val, options) {
             return !!(val)
           },
 
-          message (field, val) {
+          message (field, options) {
             return 'last name is required!!!'
           }
         }
-      }
+      },
+
+      message: ['required'],
     }
   },
 
   components: {
-    ErrorMessages
+    ErrorMessages,
+    Hello
   }
 }
 </script>
@@ -69,5 +101,14 @@ export default {
 
 .error {
   color: red;
+}
+
+.text-left {
+  text-align: left;
+}
+
+form {
+  border: 1px solid #bbb;
+  padding: 10px;
 }
 </style>

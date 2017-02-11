@@ -88,7 +88,10 @@ module.exports = {
     ]
   },
   eslint: {
-    formatter: require('eslint-friendly-formatter')
+    formatter: require('eslint-friendly-formatter'),
+    failOnWarning: false,
+    failOnError: false,
+    emitWarning: true
   },
   vue: {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
