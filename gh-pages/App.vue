@@ -124,9 +124,14 @@ input {
   padding: 5px;
   border: 1px solid #ccc;
   outline: 0;
+  font-size: inherit;
 }
 
 input.touched.invalid {
   border: 1px solid red;
+}
+
+input.valid {
+  border: 1px solid green;
 }
 </style>

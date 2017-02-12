@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 baseWebpackConfig.entry = {
-  app: './docs/main.js'
+  app: './gh-pages/main.js'
 };
 
 // add hot-reload related code to entry chunks

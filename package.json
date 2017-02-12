@@ -1,6 +1,6 @@
 {
   "name": "vue-validity",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple, powerful and flexible model-based Vue.js validation library",
   "author": "Justus <jrenton87@gmail.com>",
   "license": "MIT",
@@ -11,6 +11,10 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrenton/vue-validity"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -75,5 +79,17 @@
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
-  }
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "validate",
+    "validation",
+    "validator",
+    "validity"
+  ],
+  "bugs": {
+    "url": "https://github.com/jrenton/vue-validity/issues"
+  },
+  "homepage": "https://github.com/jrenton/vue-validity/blob/master/README.md"
 }
