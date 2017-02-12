@@ -3,10 +3,9 @@
 > A simple, powerful and flexible validation library for Vue.js 2.0.
 
 - Model-based validation.
-- Automatically adds input classes based on state with directive (eg. 'dirty', 'invalid', etc.)
+- Automatically adds input classes based on state (eg. 'dirty', 'invalid', etc.)
 - Set custom errors (eg. server-side errors) via $setErrors.
-- Create custom validators along with custom errors.
-- Translations
+- Create custom validators along with custom errors messages.
 
 ## Installation
 
@@ -17,23 +16,7 @@ import Vue from 'vue'
 import Validity from 'vue-validity'
 
 // Optionally provide configuration options.
-const options = {
-  // Name of the directive. Defaults to 'validity'.
-  directiveName: 'validity',
-  // Name of the input classes to be used.
-  inputClasses: {
-    touched: 'touched',
-    untouched: 'untouched',
-    valid: 'valid',
-    invalid: 'invalid'
-  },
-  // Specify custom error messages.
-  errorMessages: {
-    required: '{field} is required????'
-  }
-}
-
-Vue.use(Validity, options)
+Vue.use(Validity, {})
 ```
 
 ## Basic usage
