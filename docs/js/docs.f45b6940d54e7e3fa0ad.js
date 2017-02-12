@@ -10,20 +10,6 @@
 })(this, function() {
 return webpackJsonp_name_([1,2],{
 
-/***/ 112:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 113:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 114:
 /***/ (function(module, exports) {
 
@@ -32,17 +18,31 @@ return webpackJsonp_name_([1,2],{
 /***/ }),
 
 /***/ 115:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 116:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(114)
+__webpack_require__(116)
 
-var Component = __webpack_require__(35)(
+var Component = __webpack_require__(21)(
   /* script */
-  __webpack_require__(65),
+  __webpack_require__(66),
   /* template */
-  __webpack_require__(118),
+  __webpack_require__(122),
   /* scopeId */
   "data-v-4c68cce8",
   /* cssModules */
@@ -54,7 +54,26 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 116:
+/***/ 119:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(21)(
+  /* script */
+  __webpack_require__(67),
+  /* template */
+  __webpack_require__(123),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 120:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -62,7 +81,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "app"
     }
-  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('form', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "navigation"
+  }, [_vm._m(1), _vm._v(" "), _c('div', [_c('div', {
+    attrs: {
+      "id": "installation"
+    }
+  }, [_c('h2', [_vm._v("Installation")]), _vm._v(" "), _c('prism-code', [_vm._v("npm install --save vue-validity")]), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "id": "install"
+    }
+  }, [_vm._v("\nimport Vue from 'vue'\nimport Validity from 'vue-validity'\n\n// Optionally pass in configuration options.\nVue.use(Validity, {})\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "basic-usage"
+    }
+  }, [_c('h2', [_vm._v("Basic usage")]), _vm._v(" "), _c('p', [_vm._v("For each value you want to validate, you have to create a key inside validations options.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nexport default {\n  data () {\n    return {\n      name: ''\n    }\n  },\n  validations: {\n    name: ['required', 'minlength:4']\n  }\n}\n      ")]), _vm._v(" "), _c('p', [_vm._v("This will result in the following validation object:")]), _vm._v(" "), _c('prism-code', [_vm._v("\n$v: {\n  \"name\": {\n    \"required\": {\n      \"$value\": false,\n      \"$message\": \"name is required.\"\n    },\n    \"minlength\": {\n      \"$value\": true,\n      \"$message\": \"name should be at least 4 chars.\"\n    },\n    \"$valid\": false,\n    \"$dirty\": false,\n    \"$error\": false,\n    \"$errors\": []\n  },\n  \"$valid\": false,\n  \"$dirty\": false,\n  \"$error\": false,\n  \"$errors\": []\n}\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "display-error-messages"
+    }
+  }, [_c('h2', [_vm._v("Display error messages")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "language": "html"
+    }
+  }, [_vm._v(_vm._s(_vm.errorHtml))]), _vm._v(" "), _c('p', [_vm._v("We can display errors in this manner on individual properties, or all validation errors that exist, for use in an error summary, for example.")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "custom-error-messages"
+    }
+  }, [_c('h2', [_vm._v("Custom error messages")]), _vm._v(" "), _c('p', [_vm._v("vue-validity comes with error messages already, however, they are able to be customized. This is helpful when you have translations.")]), _vm._v(" "), _c('p', [_vm._v("When installing vue-validity you can add these custom error messages in the the options object under errorMessages.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  errorMessages: {\n    required: '{field} is required'\n  }\n}\n\nVue.use(Validity, options)\n      ")]), _vm._v(" "), _c('p', [_vm._v("{field} is just a placeholder for the field that this will be used on. If the field name is \"firstName\" then you error message will read: \"firstName is required\".")]), _vm._v(" "), _vm._m(3)], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "custom-validators"
+    }
+  }, [_c('h2', [_vm._v("Custom validators")]), _vm._v(" "), _c('p', [_vm._v("The installed validators are great, but you can also easily add your own!")]), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "language": "javascript"
+    }
+  }, [_vm._v("\nimport Validity from 'vue-validity'\n\nValidity.extend('range', {\n  // The order of options is important when you\n  // are referencing a validator via a string.\n  // Eg. name: ['range:2,3'] is going to depend\n  // on this options array matching that first\n  // and second value.\n  options: [\n    {\n      name: 'minlength',\n      value: 0\n    },\n    {\n      name: 'maxlenth',\n      value: 10\n    }\n  ],\n\n  // Method to return whether the current\n  // field is valid based on the given constraints.\n  validate (value, options) {\n    // You have access to the current value and any\n    // options from the options array by their name.\n    // Eg. minlength == 0 and maxlength == 10\n    return value.length >= options.minlength\n            && value.length <= options.maxlength\n  }\n})\n      ")]), _vm._v(" "), _c('p', [_vm._v("Validators can also be defined directly inline in the validations object.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nvalidations: {\n  name: {\n    required: {\n      validate (value) {\n        return !!(value)\n      },\n\n      message (field) {\n        return `${field} is required!`\n      }\n    }\n  }\n}\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "manually-add-errors"
+    }
+  }, [_c('h2', [_vm._v("Manually add errors")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('prism-code', [_vm._v("\nthis.$v.$setErrors([\n  {\n    field: 'name',\n    message: 'You cannot do that!'\n  }\n])\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "input-classes"
+    }
+  }, [_c('h2', [_vm._v("Input classes")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "language": "html"
+    }
+  }, [_vm._v(_vm._s(_vm.inputClasses))]), _vm._v(" "), _c('p', [_vm._v("This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.")]), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  inputClasses: {\n    valid: 'my-valid',\n    invalid: 'my-invalid'\n  }\n}\n\nVue.use(Validity, options)\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "playground"
+    }
+  }, [_c('h2', [_vm._v("Playground")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('form', {
     on: {
       "submit": function($event) {
         $event.preventDefault();
@@ -144,16 +213,77 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Submit")]), _vm._v(" "), _c('h5', [_vm._v("Validation state:")]), _vm._v(" "), _c('pre', {
     staticClass: "text-left"
-  }, [_vm._v("$v: " + _vm._s(_vm.$v))])], 1)])
+  }, [_vm._v("$v: " + _vm._s(_vm.$v)), _vm._v("\n      ")])], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
+  return _c('div', {
+    staticClass: "intro",
+    attrs: {
+      "id": "intro"
+    }
+  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('ul', {
     staticClass: "text-left"
-  }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])
+  }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "#intro"
+    }
+  }, [_vm._v("Introduction")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#installation"
+    }
+  }, [_vm._v("Installation")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#basic-usage"
+    }
+  }, [_vm._v("Basic usage")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#display-error-messages"
+    }
+  }, [_vm._v("Display error messages")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#custom-error-messages"
+    }
+  }, [_vm._v("Custom error messages")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#custom-validators"
+    }
+  }, [_vm._v("Custom validators")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#manually-add-errors"
+    }
+  }, [_vm._v("Manually add errors")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#input-classes"
+    }
+  }, [_vm._v("Input classes")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#playground"
+    }
+  }, [_vm._v("Playground")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("A validation library is not all that useful without being able to provide us with error messages that relate to a given field. Luckily, "), _c('code', [_vm._v("vue-validity")]), _vm._v(" makes this very easy! As you can see in the validations object above, we have access to "), _c('code', [_vm._v("$errors")]), _vm._v(" on each property.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Other validators can have their own options as well. For example, a range validator should have two values that we want to use to customize the message. See the "), _c('a', {
+    attrs: {
+      "href": "#custom-validators"
+    }
+  }, [_vm._v("Custom validators")]), _vm._v(" section to read more about this.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("There may be times where you would like to manually set your own errors. This is especially helpfuly when you have server-side errors that come back. Much like each nested property has "), _c('code', [_vm._v("$reset")]), _vm._v(" and "), _c('code', [_vm._v("$validate")]), _vm._v(", you also have access to "), _c('code', [_vm._v("$setErrors")]), _vm._v(", which accepts an array of errors:")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("It is common to apply classes to your input fields based on your input's state (whether it is valid, if it has been touched, etc). In order to add this functionality, all you need to do is add the "), _c('code', [_vm._v("v-validity")]), _vm._v(" directive on the input.\n      ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('dl', [_c('dt', [_vm._v("\n          touched\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The control has been blurred.\n        ")]), _vm._v(" "), _c('dt', [_vm._v("\n          untouched\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The control has not been blurred.\n        ")]), _vm._v(" "), _c('dt', [_vm._v("\n          valid\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The input is valid.\n        ")]), _vm._v(" "), _c('dt', [_vm._v("\n          invalid\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The input is invalid.\n        ")]), _vm._v(" "), _c('dt', [_vm._v("\n          dirty\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The input has been interacted with.\n        ")]), _vm._v(" "), _c('dt', [_vm._v("\n          dirty\n        ")]), _vm._v(" "), _c('dd', [_vm._v("\n          The input has not been interacted with.\n        ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("You can customize the names of these classes via the "), _c('code', [_vm._v("inputClasses")]), _vm._v(" property of the options when you are initializing "), _c('code', [_vm._v("vue-validity")]), _vm._v(".")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Experiment with "), _c('code', [_vm._v("vue-validity")]), _vm._v(" here!")])
 }]}
 
 /***/ }),
 
-/***/ 117:
+/***/ 121:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -166,7 +296,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 118:
+/***/ 122:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -198,7 +328,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 121:
+/***/ 123:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('pre', {
+    ref: "prism",
+    staticClass: "prism"
+  }, [_vm._t("default")], 2)
+},staticRenderFns: []}
+
+/***/ }),
+
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -236,11 +378,11 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ }),
 
-/***/ 21:
+/***/ 22:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
 /* harmony export (immutable) */ __webpack_exports__["a"] = getObjectByString;
 /* unused harmony export hasClass */
@@ -334,7 +476,7 @@ var flatten = function flatten(arr) {
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -379,7 +521,7 @@ var flatten = function flatten(arr) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__required__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__required__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__minlength__ = __webpack_require__(62);
 
 
@@ -399,38 +541,18 @@ var flatten = function flatten(arr) {
 
 /***/ }),
 
-/***/ 37:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(22);
-
-
-/* harmony default export */ __webpack_exports__["a"] = {
-  validate: function validate(value) {
-    if (Array.isArray(value)) return !!value.length;
-
-    return value === undefined || value === null ? false : !!String(value).length;
-  },
-  message: function message(field, val) {
-    return __WEBPACK_IMPORTED_MODULE_0__errorMessages__["a" /* default */].getErrorMessage('required', field, val);
-  }
-};
-
-/***/ }),
-
-/***/ 55:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(113)
+__webpack_require__(115)
 
-var Component = __webpack_require__(35)(
+var Component = __webpack_require__(21)(
   /* script */
-  __webpack_require__(64),
+  __webpack_require__(65),
   /* template */
-  __webpack_require__(117),
+  __webpack_require__(121),
   /* scopeId */
   null,
   /* cssModules */
@@ -446,11 +568,11 @@ module.exports = Component.exports
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directive__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixin__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validators__ = __webpack_require__(36);
 
 
@@ -496,13 +618,13 @@ __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default()(__WEBP
 
 
 /* styles */
-__webpack_require__(112)
+__webpack_require__(114)
 
-var Component = __webpack_require__(35)(
+var Component = __webpack_require__(21)(
   /* script */
-  __webpack_require__(63),
+  __webpack_require__(64),
   /* template */
-  __webpack_require__(116),
+  __webpack_require__(120),
   /* scopeId */
   null,
   /* cssModules */
@@ -518,9 +640,9 @@ module.exports = Component.exports
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(22);
 
 
 
@@ -654,7 +776,7 @@ function addClasses(el, binding, vnode) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validationVm__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(22);
 
 
 
@@ -696,15 +818,15 @@ function addClasses(el, binding, vnode) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_promise__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_promise__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validators__ = __webpack_require__(36);
 /* unused harmony export makeValidationVm */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return validateModel; });
@@ -1001,7 +1123,7 @@ var validateModel = function validateModel(model, validations) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(23);
 
 
 /* harmony default export */ __webpack_exports__["a"] = {
@@ -1030,12 +1152,33 @@ var validateModel = function validateModel(model, validations) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(23);
+
+
+/* harmony default export */ __webpack_exports__["a"] = {
+  validate: function validate(value) {
+    if (Array.isArray(value)) return !!value.length;
+
+    return value === undefined || value === null ? false : !!String(value).length;
+  },
+  message: function message(field, val) {
+    return __WEBPACK_IMPORTED_MODULE_0__errorMessages__["a" /* default */].getErrorMessage('required', field, val);
+  }
+};
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_validators_required__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue__);
 
 
 
@@ -1051,7 +1194,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         firstName: null,
         lastName: null,
         message: ''
-      }
+      },
+      errorHtml: '<form>\n  <input type="text" v-model="name">\n  <ul>\n    <li v-for="error in $v.name.$errors">\n      {{ error.message }}\n    </li>\n  </ul>\n</form>',
+      inputClasses: '<input type="text" v-model="name" v-validity>'
     };
   },
 
@@ -1105,13 +1250,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   components: {
     ErrorMessages: __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue___default.a,
-    Hello: __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue___default.a
+    Hello: __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue___default.a,
+    PrismCode: __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue___default.a
   }
 };
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1124,12 +1270,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ErrorMessages_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ErrorMessages_vue__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ErrorMessages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ErrorMessages_vue__);
 
 
@@ -1149,7 +1295,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   }
 };
 
+/***/ }),
+
+/***/ 67:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prismjs__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+  props: {
+    language: {
+      type: String,
+      default: 'javascript'
+    }
+  },
+
+  mounted: function mounted() {
+    var code = this.$refs.prism.innerText;
+
+    this.$refs.prism.innerHTML = __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.highlight(code, __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.languages[this.language]);
+  }
+};
+
 /***/ })
 
-},[121]);
+},[125]);
 });
