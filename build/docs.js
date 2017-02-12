@@ -11,7 +11,7 @@ var webpack = require('webpack')
 var config = require('../config')
 var webpackDocsConfig = require('./webpack.docs.conf')
 
-var spinner = ora('building for production...')
+var spinner = ora('Building documentation...')
 spinner.start()
 
 var assetsPath = path.join(config.docs.assetsRoot, config.docs.assetsSubDirectory)
@@ -32,6 +32,6 @@ webpack(webpackDocsConfig, function (err, stats) {
     chunkModules: false
   }) + '\n\n')
 
-  console.log(chalk.cyan('  Build complete.\n'))
+  console.log(chalk.cyan('  Documentation complete.\n'))
 })
 

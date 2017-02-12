@@ -150,7 +150,7 @@ validations: {
     </div>
     <div id="manually-add-errors">
       <h2>Manually add errors</h2>
-      <p>There may be times where you would like to manually set your own errors. This is especially helpfuly when you have server-side errors that come back. Much like each nested property has <code>$reset</code> and <code>$validate</code>, you also have access to <code>$setErrors</code>, which accepts an array of errors:</p>
+      <p>There may be times where you would like to manually set your own errors. This is especially helpful when you have server-side errors that come back. Much like each nested property has <code>$reset</code> and <code>$validate</code>, you also have access to <code>$setErrors</code>, which accepts an array of errors:</p>
       <prism-code>
 this.$v.$setErrors([
   {
@@ -198,7 +198,7 @@ this.$v.$setErrors([
           The input has been interacted with.
         </dd>
         <dt>
-          dirty
+          pristine
         </dt>
         <dd>
           The input has not been interacted with.
