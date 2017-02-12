@@ -101,7 +101,7 @@ function addClasses (el, binding, vnode, classNames = null) {
   }
 
   const isDirty = model.$dirty
-  const isValid = !model.$invalid
+  const isValid = model.$valid
 
   if (isDirty) {
     addClass(el, classNames.touched)
