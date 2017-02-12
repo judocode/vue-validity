@@ -1,34 +1,243 @@
 <template>
   <div id="app">
-    <h1>vue-validity</h1>
-    <h4>A simple, powerful and flexible Vue.js validation library.</h4>
-    <ul class="text-left">
-      <li>Model-based validation</li>
-      <li>Automatically adds classes based on input state</li>
-      <li>Programmatically add errors (eg. server-side errors)</li>
-      <li>Add your own translations</li>
-      <li>Create your own custom validations</li>
-      <li>Extend existing validations</li>
-    </ul>
-    <form @submit.prevent="submitForm">
-      <h3>Example form</h3>
-      <input type="text" v-model="match.firstName" placeholder="First name" v-validity>
-      <error-messages :model="$v.match.firstName"></error-messages>
-      <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
-      <error-messages :model="$v.match.lastName"></error-messages>
-      <hello v-model="match.message"></hello>
-      <button type="submit">Submit</button>
-      <h5>Validation state:</h5>
-      <pre class="text-left">$v: {{ $v }}</pre>
-    </form>
+    <div id="intro" class="intro">
+      <h1>vue-validity</h1>
+      <h4>A simple, powerful and flexible Vue.js validation library.</h4>
+      <ul class="text-left">
+        <li>Model-based validation</li>
+        <li>Automatically adds classes based on input state</li>
+        <li>Programmatically add errors (eg. server-side errors)</li>
+        <li>Add your own translations</li>
+        <li>Create your own custom validations</li>
+        <li>Extend existing validations</li>
+      </ul>
+    </div>
+    <div class="navigation">
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#basic-usage">Basic usage</a></li>
+        <li><a href="#display-error-messages">Display error messages</a></li>
+        <li><a href="#custom-error-messages">Custom error messages</a></li>
+        <li><a href="#custom-validators">Custom validators</a></li>
+        <li><a href="#manually-add-errors">Manually add errors</a></li>
+        <li><a href="#input-classes">Input classes</a></li>
+        <li><a href="#playground">Playground</a></li>
+      </ul>
+    <div>
+    <div id="installation">
+      <h2>Installation</h2>
+      <prism-code>npm install --save vue-validity</prism-code>
+      <prism-code id="install">
+import Vue from 'vue'
+import Validity from 'vue-validity'
+
+// Optionally pass in configuration options.
+Vue.use(Validity, {})
+      </prism-code>
+    </div>
+    <div id="basic-usage">
+      <h2>Basic usage</h2>
+      <p>For each value you want to validate, you have to create a key inside validations options.</p>
+      <prism-code>
+export default {
+  data () {
+    return {
+      name: ''
+    }
+  },
+  validations: {
+    name: ['required', 'minlength:4']
+  }
+}
+      </prism-code>
+      <p>This will result in the following validation object:</p>
+      <prism-code>
+$v: {
+  "name": {
+    "required": {
+      "$value": false,
+      "$message": "name is required."
+    },
+    "minlength": {
+      "$value": true,
+      "$message": "name should be at least 4 chars."
+    },
+    "$valid": false,
+    "$dirty": false,
+    "$error": false,
+    "$errors": []
+  },
+  "$valid": false,
+  "$dirty": false,
+  "$error": false,
+  "$errors": []
+}
+      </prism-code>
+    </div>
+    <div id="display-error-messages">
+      <h2>Display error messages</h2>
+      <p>A validation library is not all that useful without being able to provide us with error messages that relate to a given field. Luckily, <code>vue-validity</code> makes this very easy! As you can see in the validations object above, we have access to <code>$errors</code> on each property.</p>
+      <prism-code language="html">{{ errorHtml }}</prism-code>
+      <p>We can display errors in this manner on individual properties, or all validation errors that exist, for use in an error summary, for example.</p>
+    </div>
+    <div id="custom-error-messages">
+      <h2>Custom error messages</h2>
+      <p>vue-validity comes with error messages already, however, they are able to be customized. This is helpful when you have translations.</p>
+      <p>When installing vue-validity you can add these custom error messages in the the options object under errorMessages.</p>
+      <prism-code>
+const options = {
+  errorMessages: {
+    required: '{field} is required'
+  }
+}
+
+Vue.use(Validity, options)
+      </prism-code>
+      <p>{field} is just a placeholder for the field that this will be used on. If the field name is "firstName" then you error message will read: "firstName is required".</p>
+      <p>Other validators can have their own options as well. For example, a range validator should have two values that we want to use to customize the message. See the <a href="#custom-validators">Custom validators</a> section to read more about this.</p>
+    </div>
+    <div id="custom-validators">
+      <h2>Custom validators</h2>
+      <p>The installed validators are great, but you can also easily add your own!</p>
+      <prism-code language="javascript">
+import Validity from 'vue-validity'
+
+Validity.extend('range', {
+  // The order of options is important when you
+  // are referencing a validator via a string.
+  // Eg. name: ['range:2,3'] is going to depend
+  // on this options array matching that first
+  // and second value.
+  options: [
+    {
+      name: 'minlength',
+      value: 0
+    },
+    {
+      name: 'maxlenth',
+      value: 10
+    }
+  ],
+
+  // Method to return whether the current
+  // field is valid based on the given constraints.
+  validate (value, options) {
+    // You have access to the current value and any
+    // options from the options array by their name.
+    // Eg. minlength == 0 and maxlength == 10
+    return value.length >= options.minlength
+            && value.length <= options.maxlength
+  }
+})
+      </prism-code>
+      <p>Validators can also be defined directly inline in the validations object.</p>
+      <prism-code>
+validations: {
+  name: {
+    required: {
+      validate (value) {
+        return !!(value)
+      },
+
+      message (field) {
+        return `${field} is required!`
+      }
+    }
+  }
+}
+      </prism-code>
+    </div>
+    <div id="manually-add-errors">
+      <h2>Manually add errors</h2>
+      <p>There may be times where you would like to manually set your own errors. This is especially helpfuly when you have server-side errors that come back. Much like each nested property has <code>$reset</code> and <code>$validate</code>, you also have access to <code>$setErrors</code>, which accepts an array of errors:</p>
+      <prism-code>
+this.$v.$setErrors([
+  {
+    field: 'name',
+    message: 'You cannot do that!'
+  }
+])
+      </prism-code>
+    </div>
+    <div id="input-classes">
+      <h2>Input classes</h2>
+      <p>It is common to apply classes to your input fields based on your input's state (whether it is valid, if it has been touched, etc). In order to add this functionality, all you need to do is add the <code>v-validity</code> directive on the input.
+      </p>
+      <prism-code language="html">{{ inputClasses }}</prism-code>
+      <p>This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.</p>
+      <dl>
+        <dt>
+          touched
+        </dt>
+        <dd>
+          The control has been blurred.
+        </dd>
+        <dt>
+          untouched
+        </dt>
+        <dd>
+          The control has not been blurred.
+        </dd>
+        <dt>
+          valid
+        </dt>
+        <dd>
+          The input is valid.
+        </dd>
+        <dt>
+          invalid
+        </dt>
+        <dd>
+          The input is invalid.
+        </dd>
+        <dt>
+          dirty
+        </dt>
+        <dd>
+          The input has been interacted with.
+        </dd>
+        <dt>
+          dirty
+        </dt>
+        <dd>
+          The input has not been interacted with.
+        </dd>
+      </dl>
+      <p>You can customize the names of these classes via the <code>inputClasses</code> property of the options when you are initializing <code>vue-validity</code>.</p>
+      <prism-code>
+const options = {
+  inputClasses: {
+    valid: 'my-valid',
+    invalid: 'my-invalid'
+  }
+}
+
+Vue.use(Validity, options)
+      </prism-code>
+    </div>
+    <div id="playground">
+      <h2>Playground</h2>
+      <p>Experiment with <code>vue-validity</code> here!</p>
+      <form @submit.prevent="submitForm">
+        <h3>Example form</h3>
+        <input type="text" v-model="match.firstName" placeholder="First name" v-validity>
+        <error-messages :model="$v.match.firstName"></error-messages>
+        <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
+        <error-messages :model="$v.match.lastName"></error-messages>
+        <hello v-model="match.message"></hello>
+        <button type="submit">Submit</button>
+        <h5>Validation state:</h5>
+        <pre class="text-left">$v: {{ $v }}</prism-code>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-
 import Hello from './components/Hello.vue'
 import ErrorMessages from './components/ErrorMessages.vue'
-import required from '../src/validators/required'
+import PrismCode from './components/PrismCode.vue'
 
 export default {
   name: 'app',
@@ -39,7 +248,16 @@ export default {
         firstName: null,
         lastName: null,
         message: '',
-      }
+      },
+      errorHtml: `<form>
+  <input type="text" v-model="name">
+  <ul>
+    <li v-for="error in $v.name.$errors">
+      {{ error.message }}
+    </li>
+  </ul>
+</form>`,
+      inputClasses: `<input type="text" v-model="name" v-validity>`
     }
   },
 
@@ -90,27 +308,31 @@ export default {
 
   components: {
     ErrorMessages,
-    Hello
+    Hello,
+    PrismCode
   }
 }
 </script>
 
-<style>
+<style lang="less">
+@import "./less/prism";
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 30px;
   font-size: 16px;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
 }
 
 .error {
   color: red;
 }
 
-.text-left {
+.text-left, pre {
   text-align: left;
 }
 
