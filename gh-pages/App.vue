@@ -3,16 +3,19 @@
     <div id="intro" class="intro">
       <h1>vue-validity</h1>
       <h4>A simple, powerful and flexible Vue.js validation library.</h4>
+      <h3>Features</h3>
       <ul class="text-left">
         <li>Model-based validation</li>
         <li>Automatically adds classes based on input state</li>
         <li>Programmatically add errors (eg. server-side errors)</li>
+        <li>Validate custom components</li>
         <li>Add your own translations</li>
         <li>Create your own custom validations</li>
         <li>Extend existing validations</li>
       </ul>
     </div>
     <div class="navigation">
+      <h3>Navigation</h3>
       <ul>
         <li><a href="#intro">Introduction</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -20,6 +23,7 @@
         <li><a href="#display-error-messages">Display error messages</a></li>
         <li><a href="#custom-error-messages">Custom error messages</a></li>
         <li><a href="#custom-validators">Custom validators</a></li>
+        <li><a href="#validate-custom-components">Validate custom components</a></li>
         <li><a href="#manually-add-errors">Manually add errors</a></li>
         <li><a href="#input-classes">Input classes</a></li>
         <li><a href="#playground">Playground</a></li>
@@ -40,7 +44,7 @@ Vue.use(Validity, {})
       <h2>Basic usage</h2>
       <p>For each value you want to validate, you have to create a key inside validations options.</p>
       <prism-code>
-export default {
+new Vue({
   data () {
     return {
       name: ''
@@ -49,7 +53,7 @@ export default {
   validations: {
     name: ['required', 'minlength:4']
   }
-}
+})
       </prism-code>
       <p>This will result in the following validation object:</p>
       <prism-code>
@@ -147,6 +151,42 @@ validations: {
   }
 }
       </prism-code>
+    </div>
+    <div id="validate-custom-components">
+      <h2>Validate custom components</h2>
+      <p>Often you find yourself in situations where you want to abstract a certain input field into its own component, either to be shared, or because it has its own set of complex logic that would serve a better purpose in its own component. <code>vue-validity</code> makes this easy, so long as you are using the <a href="https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events"><code>v-model</code> pattern</a> for the custom component.</p>
+      <prism-code language="html">{{ parentCustomComponent }}</prism-code>
+      <prism-code>
+new Vue({
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+
+  validations: {
+    form: {
+      username: ['required'],
+      password: ['required']
+    }
+  }
+})
+      </prism-code>
+      <prism-code language="html">{{ childCustomComponent }}</prism-code>
+      <prism-code>
+new Vue({
+  props: ['value'],
+  methods: {
+    onInput (value) {
+      this.$emit('input', value)
+    }
+  }
+})
+      </prism-code>
+      <p>Notice how, in the child component, we didn't have to declare a validations object nor did we have to access the nested property of <code>$v.form.password</code>. In a child component that uses <code>v-model</code>, <code>$v</code> is basically an alias to <code>$v.form.password</code>, or whatever it is based on the context you are in.</p>
     </div>
     <div id="manually-add-errors">
       <h2>Manually add errors</h2>
@@ -257,7 +297,17 @@ export default {
     </li>
   </ul>
 </form>`,
-      inputClasses: `<input type="text" v-model="name" v-validity>`
+      inputClasses: `<input type="text" v-model="name" v-validity>`,
+      parentCustomComponent: `<!-- Parent component. -->
+<input type="text" v-model="form.username">
+<custom-password v-model="form.password"></custom-password>`,
+      childCustomComponent: `<!-- custom-password child component -->
+<input type="text" placeholder="Password" :value="value" @input="onInput($event.target.value)" v-validity>
+<ul>
+  <li v-for="error in $v.$errors">
+    {{ error.message }}
+  </li>
+</ul>`
     }
   },
 

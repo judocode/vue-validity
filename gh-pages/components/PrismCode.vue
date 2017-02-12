@@ -14,7 +14,7 @@ export default {
   },
 
   mounted() {
-    const code = this.$refs.prism.innerText
+    const code = this.$refs.prism.innerText.trim()
 
     this.$refs.prism.innerHTML = Prism.highlight(code, Prism.languages[this.language])
   }

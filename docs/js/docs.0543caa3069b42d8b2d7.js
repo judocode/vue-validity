@@ -83,7 +83,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "navigation"
-  }, [_vm._m(1), _vm._v(" "), _c('div', [_c('div', {
+  }, [_c('h3', [_vm._v("Navigation")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', [_c('div', {
     attrs: {
       "id": "installation"
     }
@@ -95,7 +95,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "basic-usage"
     }
-  }, [_c('h2', [_vm._v("Basic usage")]), _vm._v(" "), _c('p', [_vm._v("For each value you want to validate, you have to create a key inside validations options.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nexport default {\n  data () {\n    return {\n      name: ''\n    }\n  },\n  validations: {\n    name: ['required', 'minlength:4']\n  }\n}\n      ")]), _vm._v(" "), _c('p', [_vm._v("This will result in the following validation object:")]), _vm._v(" "), _c('prism-code', [_vm._v("\n$v: {\n  \"name\": {\n    \"required\": {\n      \"$value\": false,\n      \"$message\": \"name is required.\"\n    },\n    \"minlength\": {\n      \"$value\": true,\n      \"$message\": \"name should be at least 4 chars.\"\n    },\n    \"$valid\": false,\n    \"$dirty\": false,\n    \"$error\": false,\n    \"$errors\": []\n  },\n  \"$valid\": false,\n  \"$dirty\": false,\n  \"$error\": false,\n  \"$errors\": []\n}\n      ")])], 1), _vm._v(" "), _c('div', {
+  }, [_c('h2', [_vm._v("Basic usage")]), _vm._v(" "), _c('p', [_vm._v("For each value you want to validate, you have to create a key inside validations options.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  data () {\n    return {\n      name: ''\n    }\n  },\n  validations: {\n    name: ['required', 'minlength:4']\n  }\n})\n      ")]), _vm._v(" "), _c('p', [_vm._v("This will result in the following validation object:")]), _vm._v(" "), _c('prism-code', [_vm._v("\n$v: {\n  \"name\": {\n    \"required\": {\n      \"$value\": false,\n      \"$message\": \"name is required.\"\n    },\n    \"minlength\": {\n      \"$value\": true,\n      \"$message\": \"name should be at least 4 chars.\"\n    },\n    \"$valid\": false,\n    \"$dirty\": false,\n    \"$error\": false,\n    \"$errors\": []\n  },\n  \"$valid\": false,\n  \"$dirty\": false,\n  \"$error\": false,\n  \"$errors\": []\n}\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "display-error-messages"
     }
@@ -117,21 +117,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("\nimport Validity from 'vue-validity'\n\nValidity.extend('range', {\n  // The order of options is important when you\n  // are referencing a validator via a string.\n  // Eg. name: ['range:2,3'] is going to depend\n  // on this options array matching that first\n  // and second value.\n  options: [\n    {\n      name: 'minlength',\n      value: 0\n    },\n    {\n      name: 'maxlenth',\n      value: 10\n    }\n  ],\n\n  // Method to return whether the current\n  // field is valid based on the given constraints.\n  validate (value, options) {\n    // You have access to the current value and any\n    // options from the options array by their name.\n    // Eg. minlength == 0 and maxlength == 10\n    return value.length >= options.minlength\n            && value.length <= options.maxlength\n  }\n})\n      ")]), _vm._v(" "), _c('p', [_vm._v("Validators can also be defined directly inline in the validations object.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nvalidations: {\n  name: {\n    required: {\n      validate (value) {\n        return !!(value)\n      },\n\n      message (field) {\n        return `${field} is required!`\n      }\n    }\n  }\n}\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
-      "id": "manually-add-errors"
+      "id": "validate-custom-components"
     }
-  }, [_c('h2', [_vm._v("Manually add errors")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('prism-code', [_vm._v("\nthis.$v.$setErrors([\n  {\n    field: 'name',\n    message: 'You cannot do that!'\n  }\n])\n      ")])], 1), _vm._v(" "), _c('div', {
-    attrs: {
-      "id": "input-classes"
-    }
-  }, [_c('h2', [_vm._v("Input classes")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('prism-code', {
+  }, [_c('h2', [_vm._v("Validate custom components")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('prism-code', {
     attrs: {
       "language": "html"
     }
-  }, [_vm._v(_vm._s(_vm.inputClasses))]), _vm._v(" "), _c('p', [_vm._v("This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.")]), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  inputClasses: {\n    valid: 'my-valid',\n    invalid: 'my-invalid'\n  }\n}\n\nVue.use(Validity, options)\n      ")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.parentCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  data() {\n    return {\n      form: {\n        username: '',\n        password: ''\n      }\n    }\n  },\n\n  validations: {\n    form: {\n      username: ['required'],\n      password: ['required']\n    }\n  }\n})\n      ")]), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "language": "html"
+    }
+  }, [_vm._v(_vm._s(_vm.childCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  props: ['value'],\n  methods: {\n    onInput (value) {\n      this.$emit('input', value)\n    }\n  }\n})\n      ")]), _vm._v(" "), _vm._m(5)], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "manually-add-errors"
+    }
+  }, [_c('h2', [_vm._v("Manually add errors")]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('prism-code', [_vm._v("\nthis.$v.$setErrors([\n  {\n    field: 'name',\n    message: 'You cannot do that!'\n  }\n])\n      ")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "input-classes"
+    }
+  }, [_c('h2', [_vm._v("Input classes")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('prism-code', {
+    attrs: {
+      "language": "html"
+    }
+  }, [_vm._v(_vm._s(_vm.inputClasses))]), _vm._v(" "), _c('p', [_vm._v("This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  inputClasses: {\n    valid: 'my-valid',\n    invalid: 'my-invalid'\n  }\n}\n\nVue.use(Validity, options)\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "playground"
     }
-  }, [_c('h2', [_vm._v("Playground")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('form', {
+  }, [_c('h2', [_vm._v("Playground")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('form', {
     on: {
       "submit": function($event) {
         $event.preventDefault();
@@ -220,9 +232,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "intro"
     }
-  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('ul', {
+  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('h3', [_vm._v("Features")]), _vm._v(" "), _c('ul', {
     staticClass: "text-left"
-  }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])])
+  }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Validate custom components")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', [_c('li', [_c('a', {
     attrs: {
@@ -250,6 +262,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Custom validators")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
+      "href": "#validate-custom-components"
+    }
+  }, [_vm._v("Validate custom components")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
       "href": "#manually-add-errors"
     }
   }, [_vm._v("Manually add errors")])]), _vm._v(" "), _c('li', [_c('a', {
@@ -269,6 +285,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#custom-validators"
     }
   }, [_vm._v("Custom validators")]), _vm._v(" section to read more about this.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Often you find yourself in situations where you want to abstract a certain input field into its own component, either to be shared, or because it has its own set of complex logic that would serve a better purpose in its own component. "), _c('code', [_vm._v("vue-validity")]), _vm._v(" makes this easy, so long as you are using the "), _c('a', {
+    attrs: {
+      "href": "https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events"
+    }
+  }, [_c('code', [_vm._v("v-model")]), _vm._v(" pattern")]), _vm._v(" for the custom component.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Notice how, in the child component, we didn't have to declare a validations object nor did we have to access the nested property of "), _c('code', [_vm._v("$v.form.password")]), _vm._v(". In a child component that uses "), _c('code', [_vm._v("v-model")]), _vm._v(", "), _c('code', [_vm._v("$v")]), _vm._v(" is basically an alias to "), _c('code', [_vm._v("$v.form.password")]), _vm._v(", or whatever it is based on the context you are in.")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', [_vm._v("There may be times where you would like to manually set your own errors. This is especially helpful when you have server-side errors that come back. Much like each nested property has "), _c('code', [_vm._v("$reset")]), _vm._v(" and "), _c('code', [_vm._v("$validate")]), _vm._v(", you also have access to "), _c('code', [_vm._v("$setErrors")]), _vm._v(", which accepts an array of errors:")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1196,7 +1220,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         message: ''
       },
       errorHtml: '<form>\n  <input type="text" v-model="name">\n  <ul>\n    <li v-for="error in $v.name.$errors">\n      {{ error.message }}\n    </li>\n  </ul>\n</form>',
-      inputClasses: '<input type="text" v-model="name" v-validity>'
+      inputClasses: '<input type="text" v-model="name" v-validity>',
+      parentCustomComponent: '<!-- Parent component. -->\n<input type="text" v-model="form.username">\n<custom-password v-model="form.password"></custom-password>',
+      childCustomComponent: '<!-- custom-password child component -->\n<input type="text" placeholder="Password" :value="value" @input="onInput($event.target.value)" v-validity>\n<ul>\n  <li v-for="error in $v.$errors">\n    {{ error.message }}\n  </li>\n</ul>'
     };
   },
 
@@ -1317,7 +1343,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   mounted: function mounted() {
-    var code = this.$refs.prism.innerText;
+    var code = this.$refs.prism.innerText.trim();
 
     this.$refs.prism.innerHTML = __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.highlight(code, __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.languages[this.language]);
   }

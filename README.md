@@ -2,10 +2,13 @@
 
 > A simple, powerful and flexible validation library for Vue.js 2.0.
 
+### Features
+
 - Model-based validation.
-- Automatically adds input classes based on state (eg. 'dirty', 'invalid', etc.)
+- Validate custom components.
 - Set custom errors (eg. server-side errors) via $setErrors.
 - Create custom validators along with custom errors messages.
+- Automatically adds input classes based on state (eg. 'dirty', 'invalid', etc.)
 
 ## Installation
 
