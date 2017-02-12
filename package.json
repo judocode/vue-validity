@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "docs": "node build/docs.js && git subtree push --prefix gh-pages origin gh-pages",
+    "docs": "node build/docs.js",
+    "deploy": "git subtree push --prefix gh-pages origin gh-pages",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

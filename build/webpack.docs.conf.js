@@ -25,7 +25,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: path.posix.join(config.docs.assetsRoot),
     publicPath: config.docs.assetsPublicPath,
-    filename: utils.assetsPath('[name].js'),
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
     libraryTarget: 'umd',
     library: '[name]',
   },
