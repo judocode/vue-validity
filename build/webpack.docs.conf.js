@@ -24,6 +24,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.docs.productionSourceMap ? '#source-map' : false,
   output: {
     path: path.posix.join(config.docs.assetsRoot),
+    publicPath: config.docs.assetsPublicPath,
     filename: utils.assetsPath('[name].js'),
     libraryTarget: 'umd',
     library: '[name]',
