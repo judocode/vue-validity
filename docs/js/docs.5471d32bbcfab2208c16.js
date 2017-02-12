@@ -1086,7 +1086,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   validations: {
     match: {
-      firstName: ['required'],
+      firstName: ['required', 'minlength:4'],
 
       lastName: {
         required: {

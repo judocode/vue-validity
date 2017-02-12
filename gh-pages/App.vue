@@ -70,7 +70,7 @@ export default {
 
   validations: {
     match: {
-      firstName: ['required'],
+      firstName: ['required', 'minlength:4'],
 
       lastName: {
         required: {
