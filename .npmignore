@@ -1,0 +1,10 @@
+static
+test
+build
+config
+docs
+gh-pages
+.*
+yarn.lock
+*.html
+*.tgz
