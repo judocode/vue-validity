@@ -1,4 +1,9 @@
 .DS_Store
 node_modules/
-dist/
-npm-debug.log
+dist/index.html
+dist/manifest.js
+dist/manifest.min.js
+dist/vendor.js
+dist/vendor.min.js
+*.log
+test/unit/coverage

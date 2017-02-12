@@ -13,12 +13,12 @@ export function getObjectByString (obj, str, delimiter = '.') {
   // Strip leading dot.
   str = '.' + str
 
-  var regex = new RegExp('^\\' + delimiter)
+  const regex = new RegExp('^\\' + delimiter)
   str = str.replace(regex, '')
 
-  var a = str.split(`${delimiter}`)
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i]
+  const a = str.split(`${delimiter}`)
+  for (let i = 0, n = a.length; i < n; ++i) {
+    let k = a[i]
     if (k in obj) {
       obj = obj[k]
     } else {
