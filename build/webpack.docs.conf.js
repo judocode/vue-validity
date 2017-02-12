@@ -13,7 +13,7 @@ var env = process.env.NODE_ENV === 'testing'
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    docs: './docs/main.js'
+    docs: './gh-pages/main.js'
   },
   module: {
     rules: utils.styleLoaders({
@@ -52,7 +52,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.docs.index,
-      template: './docs/index.html',
+      template: './gh-pages/index.html',
       inject: true,
       minify: {
         removeComments: true,

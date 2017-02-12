@@ -28,21 +28,21 @@ input.touched.invalid {
   border: 1px solid red;
 }
 
-.hello[data-v-0dea0b36] {
+.hello[data-v-4c68cce8] {
   border: 1px solid #ccc;
 }
-h1[data-v-0dea0b36], h2[data-v-0dea0b36] {
+h1[data-v-4c68cce8], h2[data-v-4c68cce8] {
   font-weight: normal;
 }
-ul[data-v-0dea0b36] {
+ul[data-v-4c68cce8] {
   list-style-type: none;
   padding: 0;
 }
-li[data-v-0dea0b36] {
+li[data-v-4c68cce8] {
   display: inline-block;
   margin: 0 10px;
 }
-a[data-v-0dea0b36] {
+a[data-v-4c68cce8] {
   color: #42b983;
 }
 

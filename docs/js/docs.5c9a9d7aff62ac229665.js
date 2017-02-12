@@ -36,15 +36,15 @@ return webpackJsonp_name_([1,2],{
 
 
 /* styles */
-__webpack_require__(112)
+__webpack_require__(114)
 
 var Component = __webpack_require__(35)(
   /* script */
   __webpack_require__(65),
   /* template */
-  __webpack_require__(116),
+  __webpack_require__(118),
   /* scopeId */
-  "data-v-0dea0b36",
+  "data-v-4c68cce8",
   /* cssModules */
   null
 )
@@ -55,51 +55,6 @@ module.exports = Component.exports
 /***/ }),
 
 /***/ 116:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "hello"
-  }, [_c('h4', [_vm._v("Child component in form"), _vm._v(" "), _c('div', [_c('input', {
-    directives: [{
-      name: "validity",
-      rawName: "v-validity"
-    }],
-    attrs: {
-      "type": "text",
-      "placeholder": "Message"
-    },
-    domProps: {
-      "value": _vm.value
-    },
-    on: {
-      "input": function($event) {
-        _vm.onInput($event.target.value)
-      }
-    }
-  })]), _vm._v(" "), _c('error-messages', {
-    attrs: {
-      "model": _vm.$v
-    }
-  })], 1)])
-},staticRenderFns: []}
-
-/***/ }),
-
-/***/ 117:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.model.$errors), function(error) {
-    return _c('div', {
-      staticClass: "error"
-    }, [_vm._v("\n    " + _vm._s(error.message) + "\n  ")])
-  }))
-},staticRenderFns: []}
-
-/***/ }),
-
-/***/ 118:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -195,6 +150,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "text-left"
   }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])
 }]}
+
+/***/ }),
+
+/***/ 117:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', _vm._l((_vm.model.$errors), function(error) {
+    return _c('div', {
+      staticClass: "error"
+    }, [_vm._v("\n    " + _vm._s(error.message) + "\n  ")])
+  }))
+},staticRenderFns: []}
+
+/***/ }),
+
+/***/ 118:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "hello"
+  }, [_c('h4', [_vm._v("Child component in form"), _vm._v(" "), _c('div', [_c('input', {
+    directives: [{
+      name: "validity",
+      rawName: "v-validity"
+    }],
+    attrs: {
+      "type": "text",
+      "placeholder": "Message"
+    },
+    domProps: {
+      "value": _vm.value
+    },
+    on: {
+      "input": function($event) {
+        _vm.onInput($event.target.value)
+      }
+    }
+  })]), _vm._v(" "), _c('error-messages', {
+    attrs: {
+      "model": _vm.$v
+    }
+  })], 1)])
+},staticRenderFns: []}
 
 /***/ }),
 
@@ -496,13 +496,13 @@ __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default()(__WEBP
 
 
 /* styles */
-__webpack_require__(114)
+__webpack_require__(112)
 
 var Component = __webpack_require__(35)(
   /* script */
   __webpack_require__(63),
   /* template */
-  __webpack_require__(118),
+  __webpack_require__(116),
   /* scopeId */
   null,
   /* cssModules */
