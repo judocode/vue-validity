@@ -7,4 +7,3 @@ dist/vendor.js
 dist/vendor.min.js
 *.log
 test/unit/coverage
-gh-pages
