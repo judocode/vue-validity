@@ -4,51 +4,22 @@
 	(factory((global['vue-validity'] = global['vue-validity'] || {})));
 }(this, (function (exports) { 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-};
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
+/**
+ * Given a string, return the object corresponding
+ * to it with the provided delimiter.
+ *
+ * Eg. obj = { some: { prop: { hello: 'world' } } };
+ *     str = 'some.prop.hello`
+ *
+ * Will return 'world'
+ */
 function getObjectByString(obj, str) {
   var delimiter = '.';
-
+  // Convert indexes to properties.
   str = str.replace(/\[(\w+)\]/g, delimiter + '$1');
-
+  // Strip leading dot.
   str = '.' + str;
 
   var regex = new RegExp('^\\' + delimiter);
@@ -67,6 +38,9 @@ function getObjectByString(obj, str) {
   return obj;
 }
 
+/**
+ * Check if element has the css class on it.
+ */
 function hasClass(el, className) {
   if (el.classList) {
     return el.classList.contains(className);
@@ -75,6 +49,9 @@ function hasClass(el, className) {
   return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
 }
 
+/**
+ * Adds the provided css className to the element.
+ */
 function addClass(el, className) {
   if (el.classList) {
     el.classList.add(className);
@@ -83,6 +60,9 @@ function addClass(el, className) {
   }
 }
 
+/**
+ * Remove the provided css className from the element.
+ */
 function removeClass(el, className) {
   if (el.classList) {
     el.classList.remove(className);
@@ -123,12 +103,13 @@ var flatten = function flatten(arr) {
 };
 
 var defaultClassNames = {
-  touched: 'touched',
-  untouched: 'untouched',
-  valid: 'valid',
-  invalid: 'invalid',
-  pristine: 'pristine',
-  dirty: 'dirty' };
+  touched: 'touched', // the control has been blurred
+  untouched: 'untouched', // the control hasn't been blurred
+  valid: 'valid', // model is valid
+  invalid: 'invalid', // model is invalid
+  pristine: 'pristine', // control has not been interacted with
+  dirty: 'dirty' // control has been interacted with
+};
 
 var validationDirective = (function (inputClasses) {
   return {
@@ -324,6 +305,8 @@ var validators = {
   }
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function getValidationValue(vm, dynamicKey) {
   return vm[dynamicKey];
 }
@@ -375,6 +358,7 @@ function setErrorsRecursive(errors) {
   }
 }
 
+// vm static definition
 var defaultMethods = {
   $validate: function $validate(callback) {
     this.setErrors = [];
@@ -411,7 +395,7 @@ var defaultComputed = {
     }
 
     var keys = this.dynamicKeys;
-
+    // iteration to trigger as little getters as possible
     var foundNested = false;
     for (var i = 0; i < keys.length; i++) {
       var ruleOrNested = keys[i];
@@ -470,6 +454,14 @@ var mapDynamicRuleName = function mapDynamicRuleName(k) {
   return dynamicName + k;
 };
 
+/*
+ * Creates a view model from a validations object.
+ *
+ * This starts at the root "validations" object that
+ * is in a component, and traverses from there.
+ *
+ * @param validations Object|Array
+ */
 function makeValidationVm(validations, parentVm) {
   var rootVm = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : parentVm;
   var parentProp = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
@@ -479,6 +471,10 @@ function makeValidationVm(validations, parentVm) {
   });
   var dynamicKeys = validationRuleNames.map(mapDynamicRuleName);
 
+  // Create computed rules for the current object, where
+  // validationRuleNames are the properties of the current object,
+  // which may or may not be validation rule names due to the nested
+  // nature of the objects.
   var computedRules = buildFromKeys(validationRuleNames, function (ruleName) {
     var rule = validations[ruleName];
 
@@ -501,6 +497,18 @@ function makeValidationVm(validations, parentVm) {
   return proxyVm(validationVm, validationRuleNames);
 }
 
+/*
+ * Returns a validator for the current "rule".
+ *
+ * A rule is in fact a rule if `isSingleRule` evaluates to true,
+ * otherwise we are nested somewhere else in the validations object,
+ * in which case we recursively traverse the object until the validators
+ * are discovered.
+ *
+ * @param rootVm Object
+ * @param rule Object|Array
+ * @param ruleName String
+ */
 function getValidator(rootVm, rule, ruleName, vm, vmProp) {
   if (isSingleRule(rule)) {
     return getValidationRule(rootVm, rule, ruleName, vm, vmProp);
@@ -514,14 +522,14 @@ function proxyVm(vm, originalKeys) {
     var dynamicRuleName = mapDynamicRuleName(key);
     return {
       enumerable: true,
-      get: function get$$1() {
+      get: function get() {
         return getValidationValue(vm, dynamicRuleName);
       }
     };
   }), buildFromKeys(defaultComputedKeys, function (key) {
     return {
       enumerable: true,
-      get: function get$$1() {
+      get: function get() {
         return vm[key];
       }
     };
@@ -552,6 +560,7 @@ function getValidationRule(rootVm, rule, ruleName, parentVm, prop) {
 
     var validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions);
 
+    // support cross referencing validators, especially validation groups
     if (isObject(validatorOutput) && validatorOutput.__isValidity) {
       return validatorOutput;
     }
@@ -565,7 +574,14 @@ function getValidationRule(rootVm, rule, ruleName, parentVm, prop) {
   };
 }
 
+/*
+ * A parent validation node is the root node,
+ * or any nested object that holds validation
+ * rules in its children (and beyond).
+ */
 function getParentValidationRule(rootVm, rules, ruleName, parentVm, prop) {
+  // If it is an array of strings, then load the
+  // associated validators.
   if (Array.isArray(rules)) {
     var newRules = {};
     for (var i = 0; i < rules.length; i++) {
@@ -620,12 +636,15 @@ var validationMixin = {
         return validateModel(_this, validations);
       };
     } else if (options.parent && options.parent.$v) {
+      // If the current component has a parent,
+      // try and get the name of v-model.
       var parentData = options._parentVnode.data.directives || [];
       var directives = parentData.filter(function (d) {
         return d.name === 'model';
       });
 
       if (directives.length) {
+        // Set $v to what the child component v-model refers to.
         var obj = getObjectByString(options.parent.$v, directives[0].expression);
         this.$v = obj;
         this.$vChild = true;

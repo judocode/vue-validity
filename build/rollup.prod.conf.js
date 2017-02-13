@@ -9,7 +9,14 @@ export default {
   sourceMap: false,
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      externalHelpers: true,
+      runtimeHelpers: false,
+      babelrc: false,
+      presets: [
+        ["es2015", { "modules": false }],
+        "stage-2"
+      ],
     })
   ]
 }

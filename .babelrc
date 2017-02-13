@@ -3,7 +3,7 @@
     ["es2015", { "modules": false }],
     "stage-2"
   ],
-  "plugins": ["external-helpers"],
+  "plugins": ["transform-runtime"],
   "comments": false,
   "env": {
     "test": {
