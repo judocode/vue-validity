@@ -298,6 +298,7 @@ var validators = {
 
   add: function add(name, validator) {
     if (this[name]) {
+      this[name] = Object.assign(this[name], validator);
       return;
     }
 
@@ -596,6 +597,11 @@ function getParentValidationRule(rootVm, rules, ruleName, parentVm, prop) {
       }
 
       var validatorRule = validators[rule];
+
+      if (!validatorRule) {
+        console.error('Validator for rule ' + rule + 'not found.');
+        continue;
+      }
 
       for (var j = 0; j < options.length; j++) {
         var option = options[j];

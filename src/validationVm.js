@@ -284,6 +284,11 @@ function getParentValidationRule (rootVm, rules, ruleName, parentVm, prop) {
 
       const validatorRule = validators[rule]
 
+      if (!validatorRule) {
+        console.error('Validator for rule ' + rule + 'not found.')
+        continue
+      }
+
       for (let j = 0; j < options.length; j++) {
         const option = options[j]
         const validatorOption = validatorRule.options[j]

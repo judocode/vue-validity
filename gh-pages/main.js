@@ -17,6 +17,14 @@ const validityConfig = {
 
 Vue.use(Validity, validityConfig)
 
+Validity.extend('required', {
+  message (field) {
+    // This overrides the message for required,
+    // but keeps its validation.
+    return `${field} is required, man`
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
