@@ -1,4 +1,4 @@
-import directive from './directive'
+import validationDirective from './directive'
 import validationMixin from './mixin'
 import errorMessages from './validators/errorMessages'
 import validators from './validators'
@@ -14,7 +14,7 @@ let VueValidity = function (Vue, config) {
 
   errorMessages.init(config.errorMessages)
 
-  Vue.directive(config.directiveName || 'validity', directive(config.inputClasses))
+  Vue.directive(config.directiveName || 'validity', validationDirective(config.inputClasses))
   Vue.mixin(validationMixin)
 
   VueValidity.isInstalled = true
@@ -32,4 +32,5 @@ Object.keys(validators).forEach(name => {
   VueValidity.extend(name, validators[name])
 })
 
+export { validationMixin, validationDirective, VueValidity }
 export default VueValidity
