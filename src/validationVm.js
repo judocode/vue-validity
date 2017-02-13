@@ -3,8 +3,8 @@ import { buildFromKeys,
          isObject,
          constant,
          isNested,
-         flatten } from './utils'
-import validators from './validators'
+         flatten } from './utils/index'
+import validators from './validators/index'
 
 function getValidationValue (vm, dynamicKey) {
   return vm[dynamicKey]
@@ -58,12 +58,12 @@ function setErrorsRecursive (errors) {
 
 // vm static definition
 const defaultMethods = {
-  $validate () {
-    return new Promise((resolve, reject) => {
-      this.setErrors = []
-      setDirtyRecursive.call(this, true)
-      resolve()
-    })
+  $validate (callback) {
+    this.setErrors = []
+    setDirtyRecursive.call(this, true)
+    if (typeof callback === 'function') {
+      callback()
+    }
   },
   $reset () {
     this.setErrors = []

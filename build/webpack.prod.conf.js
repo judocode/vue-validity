@@ -10,6 +10,7 @@ var UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
@@ -21,7 +22,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: 'source-map',
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('[name].min.js'),
@@ -33,11 +34,14 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
-      sourceMap: false
+      comments: false,
+      sourceMap: false,
+      sourceMaps: false
     }),
     new UnminifiedWebpackPlugin(),
     // extract css into its own file
@@ -60,9 +64,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
     }),
+    new BundleAnalyzerPlugin()
   ]
 })
 

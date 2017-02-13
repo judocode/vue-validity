@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <div id="intro" class="intro">
       <h1>vue-validity</h1>
       <h4>A simple, powerful and flexible Vue.js validation library.</h4>

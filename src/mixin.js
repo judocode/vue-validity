@@ -1,5 +1,5 @@
 import { validateModel } from './validationVm'
-import { getObjectByString } from './utils'
+import { getObjectByString } from './utils/index'
 
 export default {
   beforeCreate () {

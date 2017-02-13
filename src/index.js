@@ -1,7 +1,7 @@
 import validationDirective from './directive'
 import validationMixin from './mixin'
 import errorMessages from './validators/errorMessages'
-import validators from './validators'
+import validators from './validators/index'
 
 let VueValidity = function (Vue, config) {
   if (VueValidity.isInstalled) {
@@ -28,7 +28,7 @@ VueValidity.extend = function (name, validator) {
   validators.add(name, validator)
 }
 
-Object.keys(validators).forEach(name => {
+Object.keys(validators).forEach(function (name) {
   VueValidity.extend(name, validators[name])
 })
 

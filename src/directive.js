@@ -1,4 +1,4 @@
-import { addClass, removeClass, getObjectByString } from './utils'
+import { addClass, removeClass, getObjectByString } from './utils/index'
 
 const defaultClassNames = {
   touched: 'touched', // the control has been blurred
