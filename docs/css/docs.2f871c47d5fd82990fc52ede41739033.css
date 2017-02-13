@@ -174,3 +174,7 @@ a[data-v-4c68cce8] {
 .error {
   color: red;
 }
+
+.prism-code {
+  overflow: scroll;
+}

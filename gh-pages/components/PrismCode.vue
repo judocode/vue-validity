@@ -1,5 +1,5 @@
 <template>
-  <pre class="prism" ref="prism"><slot></slot></pre>
+  <pre class="prism-code" ref="prism"><slot></slot></pre>
 </template>
 
 <script>
@@ -20,3 +20,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.prism-code {
+  overflow: scroll;
+}
+</style>
