@@ -85,7 +85,7 @@ var buildFromKeys = function buildFromKeys(keys, fn, keyFn) {
 };
 
 function isSingleRule(ruleset) {
-  return isObject(ruleset) && typeof ruleset.message === 'function' && typeof ruleset.validate === 'function';
+  return isObject(ruleset) && (typeof ruleset.message === 'function' || typeof ruleset.validate === 'function');
 }
 
 function isObject(val) {
@@ -156,12 +156,14 @@ function setPristine(el, classNames) {
 }
 
 function getValidationModel(binding, vnode) {
-  if (!vnode.context.$v) {
-    return;
+  var context = vnode.context.$v || vnode.context.$vnode.context.$v;
+
+  if (!context) {
+    return null;
   }
 
   if (vnode.context.$vChild) {
-    return vnode.context.$v;
+    return context;
   }
 
   var modelName = binding.value;
@@ -189,10 +191,10 @@ function getValidationModel(binding, vnode) {
   }
 
   if (!modelName) {
-    return vnode.context.$v;
+    return context;
   }
 
-  return getObjectByString(vnode.context.$v, modelName);
+  return getObjectByString(context, modelName);
 }
 
 function addClasses(el, binding, vnode) {
@@ -689,9 +691,12 @@ Object.keys(validators).forEach(function (name) {
   VueValidity.extend(name, validators[name]);
 });
 
+var getErrorMessage = Errors.getErrorMessage;
+
 exports.validationMixin = validationMixin;
 exports.validationDirective = validationDirective;
 exports.VueValidity = VueValidity;
+exports.getErrorMessage = getErrorMessage;
 exports['default'] = VueValidity;
 
 Object.defineProperty(exports, '__esModule', { value: true });

@@ -72,8 +72,8 @@ export const buildFromKeys = (keys, fn, keyFn) => keys.reduce((build, key) => {
 
 export function isSingleRule (ruleset) {
   return isObject(ruleset) &&
-         typeof ruleset.message === 'function' &&
-         typeof ruleset.validate === 'function'
+         (typeof ruleset.message === 'function' ||
+         typeof ruleset.validate === 'function')
 }
 
 export function isObject (val) {

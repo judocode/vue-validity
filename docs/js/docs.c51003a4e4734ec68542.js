@@ -105,7 +105,7 @@ var buildFromKeys = function buildFromKeys(keys, fn, keyFn) {
 };
 
 function isSingleRule(ruleset) {
-  return isObject(ruleset) && typeof ruleset.message === 'function' && typeof ruleset.validate === 'function';
+  return isObject(ruleset) && (typeof ruleset.message === 'function' || typeof ruleset.validate === 'function');
 }
 
 function isObject(val) {
@@ -252,6 +252,7 @@ module.exports = Component.exports
 /* unused harmony reexport validationMixin */
 /* unused harmony reexport validationDirective */
 /* unused harmony export VueValidity */
+/* unused harmony export getErrorMessage */
 
 
 
@@ -286,6 +287,8 @@ VueValidity.extend = function (name, validator) {
 __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default()(__WEBPACK_IMPORTED_MODULE_4__validators_index__["a" /* default */]).forEach(function (name) {
   VueValidity.extend(name, __WEBPACK_IMPORTED_MODULE_4__validators_index__["a" /* default */][name]);
 });
+
+var getErrorMessage = __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__["a" /* default */].getErrorMessage;
 
 
 /* harmony default export */ __webpack_exports__["a"] = VueValidity;
@@ -377,12 +380,14 @@ function setPristine(el, classNames) {
 }
 
 function getValidationModel(binding, vnode) {
-  if (!vnode.context.$v) {
-    return;
+  var context = vnode.context.$v || vnode.context.$vnode.context.$v;
+
+  if (!context) {
+    return null;
   }
 
   if (vnode.context.$vChild) {
-    return vnode.context.$v;
+    return context;
   }
 
   var modelName = binding.value;
@@ -410,10 +415,10 @@ function getValidationModel(binding, vnode) {
   }
 
   if (!modelName) {
-    return vnode.context.$v;
+    return context;
   }
 
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* getObjectByString */])(vnode.context.$v, modelName);
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* getObjectByString */])(context, modelName);
 }
 
 function addClasses(el, binding, vnode) {

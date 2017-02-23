@@ -32,5 +32,7 @@ Object.keys(validators).forEach(function (name) {
   VueValidity.extend(name, validators[name])
 })
 
-export { validationMixin, validationDirective, VueValidity }
+const getErrorMessage = errorMessages.getErrorMessage
+
+export { validationMixin, validationDirective, VueValidity, getErrorMessage }
 export default VueValidity

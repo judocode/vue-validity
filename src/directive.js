@@ -54,25 +54,29 @@ function setPristine (el, classNames) {
 }
 
 function getValidationModel (binding, vnode) {
-  if (!vnode.context.$v) {
-    return
+  const context = vnode.context.$v || vnode.context.$vnode.context.$v
+
+  if (!context) {
+    return null
   }
 
   if (vnode.context.$vChild) {
-    return vnode.context.$v
+    return context
   }
 
-  let modelName = binding.value
+  var modelName = binding.value
 
   if (!modelName) {
-    const vmodels = vnode.data.directives.filter((d) => {
+    var vmodels = vnode.data.directives.filter(function (d) {
       return d.name === 'model'
     })
 
     if (!vmodels.length) {
-      const data = vnode.context.$options._parentVnode.data || []
+      var data = vnode.context.$options._parentVnode.data || []
 
-      const directives = data.directives.filter(d => d.name === 'model')
+      var directives = data.directives.filter(function (d) {
+        return d.name === 'model'
+      })
 
       if (!data.directives.length) {
         modelName = ''
@@ -85,10 +89,10 @@ function getValidationModel (binding, vnode) {
   }
 
   if (!modelName) {
-    return vnode.context.$v
+    return context
   }
 
-  return getObjectByString(vnode.context.$v, modelName)
+  return getObjectByString(context, modelName)
 }
 
 function addClasses (el, binding, vnode, classNames = null) {
