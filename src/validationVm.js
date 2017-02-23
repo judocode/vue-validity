@@ -245,14 +245,14 @@ function getValidationRule (rootVm, rule, ruleName, parentVm, prop) {
       }, {})
     }
 
-    const validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions)
+    const validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions, parentVm)
 
     // support cross referencing validators, especially validation groups
     if (isObject(validatorOutput) && validatorOutput.__isValidity) {
       return validatorOutput
     }
 
-    const validatorMessage = rule.message.call(rootVm, prop, rule.options)
+    const validatorMessage = rule.message.call(rootVm, prop, flattenOptions, parentVm)
 
     return {
       $value: !!validatorOutput,

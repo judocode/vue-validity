@@ -23,10 +23,11 @@ export default {
 
     error = error.replace(new RegExp(/{field}/, 'g'), field)
 
-    if (options && options.length) {
-      for (let i = 0; i < options.length; i++) {
-        const option = options[i]
-        error = error.replace(new RegExp(`{${option.name}}`, 'g'), option.value)
+    if (options) {
+      for (const option in options) {
+        if (options.hasOwnProperty(option)) {
+          error = error.replace(new RegExp(`{${option}}`, 'g'), options[option])
+        }
       }
     }
 

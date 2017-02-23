@@ -250,10 +250,11 @@ var Errors = {
 
     error = error.replace(new RegExp(/{field}/, 'g'), field);
 
-    if (options && options.length) {
-      for (var i = 0; i < options.length; i++) {
-        var option = options[i];
-        error = error.replace(new RegExp('{' + option.name + '}', 'g'), option.value);
+    if (options) {
+      for (var option in options) {
+        if (options.hasOwnProperty(option)) {
+          error = error.replace(new RegExp('{' + option + '}', 'g'), options[option]);
+        }
       }
     }
 
@@ -262,7 +263,7 @@ var Errors = {
 };
 
 var required = {
-  validate: function validate(value) {
+  validate: function validate(value, options, parentVm) {
     if (Array.isArray(value)) return !!value.length;
 
     return value === undefined || value === null ? false : !!String(value).length;
@@ -278,7 +279,7 @@ var minlength = {
     value: 0
   }],
 
-  validate: function validate(value, options) {
+  validate: function validate(value, options, parentVm) {
     var length = parseInt(options.minlength, 10);
 
     if (Array.isArray(value)) {
@@ -287,7 +288,7 @@ var minlength = {
 
     return value === undefined || value === null ? true : value === '' || String(value).length >= length;
   },
-  message: function message(field, options) {
+  message: function message(field, options, parentVm) {
     return Errors.getErrorMessage('minlength', field, options);
   }
 };
@@ -559,14 +560,14 @@ function getValidationRule(rootVm, rule, ruleName, parentVm, prop) {
       }, {});
     }
 
-    var validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions);
+    var validatorOutput = rule.validate.call(rootVm, parentVm[prop], flattenOptions, parentVm);
 
     // support cross referencing validators, especially validation groups
     if (isObject(validatorOutput) && validatorOutput.__isValidity) {
       return validatorOutput;
     }
 
-    var validatorMessage = rule.message.call(rootVm, prop, rule.options);
+    var validatorMessage = rule.message.call(rootVm, prop, flattenOptions, parentVm);
 
     return {
       $value: !!validatorOutput,

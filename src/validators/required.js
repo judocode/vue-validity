@@ -1,7 +1,7 @@
 import Errors from './errorMessages'
 
 export default {
-  validate (value) {
+  validate (value, options, parentVm) {
     if (Array.isArray(value)) return !!value.length
 
     return value === undefined || value === null

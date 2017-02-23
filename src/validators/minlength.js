@@ -8,7 +8,7 @@ export default {
     }
   ],
 
-  validate (value, options) {
+  validate (value, options, parentVm) {
     const length = parseInt(options.minlength, 10)
 
     if (Array.isArray(value)) {
@@ -20,7 +20,7 @@ export default {
       : value === '' || String(value).length >= length
   },
 
-  message (field, options) {
+  message (field, options, parentVm) {
     return Errors.getErrorMessage('minlength', field, options)
   }
 }
