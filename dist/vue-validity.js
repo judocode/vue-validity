@@ -645,6 +645,13 @@ var validationMixin = {
         return validateModel(_this, validations);
       };
     } else if (options.parent && options.parent.$v) {
+      // If the child has explicitly stated it is validatable,
+      // then pass the validatation object from the parent.
+      if (options.validatable) {
+        this.$v = options.parent.$v;
+        return;
+      }
+
       // If the current component has a parent,
       // try and get the name of v-model.
       var parentData = options._parentVnode.data.directives || [];

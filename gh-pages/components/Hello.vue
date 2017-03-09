@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h4>Child component in form</a>
+    <h4>Child component in form using v-model</a>
     <div>
       <input type="text" placeholder="Message" :value="value" @input="onInput($event.target.value)" v-validity>
     </div>
@@ -15,7 +15,7 @@ export default {
   name: 'hello',
   props: ['value'],
   methods: {
-    onInput(value) {
+    onInput (value) {
       this.$emit('input', value)
     }
   },
@@ -28,9 +28,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
-  border: 1px solid #ccc;
-}
 h1, h2 {
   font-weight: normal;
 }

@@ -152,10 +152,11 @@ input.touched.invalid {
 input.valid {
   border: 1px solid green;
 }
-
-.hello[data-v-4c68cce8] {
+.border-gray {
+  padding: 10px;
   border: 1px solid #ccc;
 }
+
 h1[data-v-4c68cce8], h2[data-v-4c68cce8] {
   font-weight: normal;
 }

@@ -21,7 +21,7 @@ Validity.extend('required', {
   message (field) {
     // This overrides the message for required,
     // but keeps its validation.
-    return `${field} is required, man`
+    return `${field} is required, dude(tte)`
   }
 })
 

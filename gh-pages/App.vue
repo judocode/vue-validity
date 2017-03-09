@@ -265,8 +265,18 @@ Vue.use(Validity, options)
         <error-messages :model="$v.match.firstName"></error-messages>
         <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
         <error-messages :model="$v.match.lastName"></error-messages>
-        <hello v-model="match.message"></hello>
-        <button type="submit">Submit</button>
+        <hello v-model="match.message" class="border-gray"></hello>
+        <complex-child :login="login" class="border-gray"></complex-child>
+        <button type="submit">
+          <template v-if="isSubmittingForm">
+            Please wait...
+          </template>
+          <template v-else>
+            Submit
+          </template>
+        </button>
+        <p v-if="isSuccessfulForm && hasSubmittedForm && !isSubmittingForm">Success!</p>
+        <p v-if="!isSuccessfulForm && hasSubmittedForm && !isSubmittingForm">Fail!</p>
         <h5>Validation state:</h5>
         <pre class="text-left">$v: {{ $v }}</prism-code>
       </form>
@@ -278,6 +288,7 @@ Vue.use(Validity, options)
 import Hello from './components/Hello.vue'
 import ErrorMessages from './components/ErrorMessages.vue'
 import PrismCode from './components/PrismCode.vue'
+import ComplexChild from './components/ComplexChild.vue'
 
 export default {
   name: 'app',
@@ -287,7 +298,11 @@ export default {
       match: {
         firstName: null,
         lastName: null,
-        message: '',
+        message: ''
+      },
+      login: {
+        username: '',
+        password: ''
       },
       errorHtml: `<form>
   <input type="text" v-model="name">
@@ -307,29 +322,28 @@ export default {
   <li v-for="error in $v.$errors">
     {{ error.message }}
   </li>
-</ul>`
-    }
-  },
-
-  computed: {
-    something () {
-      return ''
+</ul>`,
+      isSuccessfulForm: false,
+      isSubmittingForm: false,
+      hasSubmittedForm: false
     }
   },
 
   methods: {
-    submitForm() {
-      this.$v.$validate().then(() => {
-        if (this.$v.$valid) {
-          console.log('valid!')
-        } else {
-          console.log('not valid!')
-        }
-      })
+    submitForm () {
+      this.isSubmittingForm = true
+
+      setTimeout(() => {
+        this.$v.$validate(() => {
+          this.hasSubmittedForm = true
+          this.isSubmittingForm = false
+          this.isSuccessfulForm = this.$v.$valid
+        })
+      }, 1000)
     }
   },
 
-  mounted() {
+  mounted () {
     this.$v.$setErrors([{
       field: 'lastName',
       message: 'fail'
@@ -352,14 +366,20 @@ export default {
         }
       },
 
-      message: ['required'],
+      message: ['required']
+    },
+
+    login: {
+      username: ['required'],
+      password: ['required']
     }
   },
 
   components: {
     ErrorMessages,
     Hello,
-    PrismCode
+    PrismCode,
+    ComplexChild
   }
 }
 </script>
@@ -405,5 +425,10 @@ input.touched.invalid {
 
 input.valid {
   border: 1px solid green;
+}
+
+.border-gray {
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 </style>
