@@ -490,6 +490,10 @@ function addClasses(el, binding, vnode) {
         return d.name === 'model';
       });
 
+      if (!directives.length && options._parentVnode.data.model) {
+        directives = [options._parentVnode.data.model];
+      }
+
       if (directives.length) {
         var obj = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils_index__["a" /* getObjectByString */])(options.parent.$v, directives[0].expression);
         this.$v = obj;
@@ -778,7 +782,7 @@ function getParentValidationRule(rootVm, rules, ruleName, parentVm, prop) {
       var validatorRule = __WEBPACK_IMPORTED_MODULE_4__validators_index__["a" /* default */][rule];
 
       if (!validatorRule) {
-        console.error('Validator for rule ' + rule + 'not found.');
+        console.error('Validator for rule ' + rule + ' not found.');
         continue;
       }
 

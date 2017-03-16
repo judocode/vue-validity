@@ -659,6 +659,10 @@ var validationMixin = {
         return d.name === 'model';
       });
 
+      if (!directives.length && options._parentVnode.data.model) {
+        directives = [options._parentVnode.data.model];
+      }
+
       if (directives.length) {
         // Set $v to what the child component v-model refers to.
         var obj = getObjectByString(options.parent.$v, directives[0].expression);

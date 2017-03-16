@@ -25,7 +25,11 @@ export default {
       // If the current component has a parent,
       // try and get the name of v-model.
       const parentData = options._parentVnode.data.directives || []
-      const directives = parentData.filter(d => d.name === 'model')
+      let directives = parentData.filter(d => d.name === 'model')
+
+      if (!directives.length && options._parentVnode.data.model) {
+        directives = [options._parentVnode.data.model]
+      }
 
       if (directives.length) {
         // Set $v to what the child component v-model refers to.

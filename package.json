@@ -1,6 +1,6 @@
 {
   "name": "vue-validity",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Simple, powerful and flexible model-based Vue.js validation library",
   "author": "Justus <jrenton87@gmail.com>",
   "license": "MIT",
