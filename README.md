@@ -55,12 +55,22 @@ $v: {
     "$valid": false,
     "$dirty": false,
     "$error": false,
-    "$errors": []
+    "$errors": [
+      {
+        "field": "name",
+        "message": "name is required."
+      }
+    ]
   },
   "$valid": false,
   "$dirty": false,
   "$error": false,
-  "$errors": []
+  "$errors": [
+    {
+      "field": "name",
+      "message": "name is required."
+    }
+  ]
 }
 ```
 

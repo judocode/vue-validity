@@ -1258,33 +1258,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("\nimport Validity from 'vue-validity'\n\nValidity.extend('range', {\n  // The order of options is important when you\n  // are referencing a validator via a string.\n  // Eg. name: ['range:2,3'] is going to depend\n  // on this options array matching that first\n  // and second value.\n  options: [\n    {\n      name: 'minlength',\n      value: 0\n    },\n    {\n      name: 'maxlenth',\n      value: 10\n    }\n  ],\n\n  // Method to return whether the current\n  // field is valid based on the given constraints.\n  validate (value, options) {\n    // You have access to the current value and any\n    // options from the options array by their name.\n    // Eg. minlength == 0 and maxlength == 10\n    return value.length >= options.minlength\n            && value.length <= options.maxlength\n  }\n})\n      ")]), _vm._v(" "), _c('p', [_vm._v("Validators can also be defined directly inline in the validations object.")]), _vm._v(" "), _c('prism-code', [_vm._v("\nvalidations: {\n  name: {\n    required: {\n      validate (value) {\n        return !!(value)\n      },\n\n      message (field) {\n        return `${field} is required!`\n      }\n    }\n  }\n}\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
+      "id": "dynamic-validation"
+    }
+  }, [_c('h2', [_vm._v("Dynamic validation")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('prism-code', [_vm._v("Validity.extend('referrer', {\n  message (field, val, parentVm) {\n    return 'Please enter a referrer!'\n  },\n  validate (field, val, parentVm) {\n    // If the referrer type is 'other',\n    // then we want to return the truthiness\n    // of the current field. Otherwise, just\n    // return true because it is valid.\n    if (parentVm.referrerType === 'other') {\n      return !!(field)\n    }\n\n    return true\n  }\n})")])], 1), _vm._v(" "), _c('div', {
+    attrs: {
       "id": "validate-custom-components"
     }
-  }, [_c('h2', [_vm._v("Validate custom components")]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('prism-code', {
+  }, [_c('h2', [_vm._v("Validate custom components")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('prism-code', {
     attrs: {
       "language": "html"
     }
-  }, [_vm._v(_vm._s(_vm.parentCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  data() {\n    return {\n      form: {\n        username: '',\n        password: ''\n      }\n    }\n  },\n\n  validations: {\n    form: {\n      username: ['required'],\n      password: ['required']\n    }\n  }\n})\n      ")]), _vm._v(" "), _c('prism-code', {
+  }, [_vm._v(_vm._s(_vm.parentCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  data () {\n    return {\n      form: {\n        username: '',\n        password: ''\n      }\n    }\n  },\n\n  validations: {\n    form: {\n      username: ['required'],\n      password: ['required']\n    }\n  }\n})\n      ")]), _vm._v(" "), _c('prism-code', {
     attrs: {
       "language": "html"
     }
-  }, [_vm._v(_vm._s(_vm.childCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  props: ['value'],\n  methods: {\n    onInput (value) {\n      this.$emit('input', value)\n    }\n  }\n})\n      ")]), _vm._v(" "), _vm._m(5)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.childCustomComponent))]), _vm._v(" "), _c('prism-code', [_vm._v("\nnew Vue({\n  props: ['value'],\n  methods: {\n    onInput (value) {\n      this.$emit('input', value)\n    }\n  }\n})\n      ")]), _vm._v(" "), _vm._m(6)], 1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "manually-add-errors"
     }
-  }, [_c('h2', [_vm._v("Manually add errors")]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('prism-code', [_vm._v("\nthis.$v.$setErrors([\n  {\n    field: 'name',\n    message: 'You cannot do that!'\n  }\n])\n      ")])], 1), _vm._v(" "), _c('div', {
+  }, [_c('h2', [_vm._v("Manually add errors")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('prism-code', [_vm._v("\nthis.$v.$setErrors([\n  {\n    field: 'name',\n    message: 'You cannot do that!'\n  }\n])\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "input-classes"
     }
-  }, [_c('h2', [_vm._v("Input classes")]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c('prism-code', {
+  }, [_c('h2', [_vm._v("Input classes")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('prism-code', {
     attrs: {
       "language": "html"
     }
-  }, [_vm._v(_vm._s(_vm.inputClasses))]), _vm._v(" "), _c('p', [_vm._v("This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  inputClasses: {\n    valid: 'my-valid',\n    invalid: 'my-invalid'\n  }\n}\n\nVue.use(Validity, options)\n      ")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.inputClasses))]), _vm._v(" "), _c('p', [_vm._v("This automatically enables 'valid', 'invalid', 'pristine', 'dirty', 'touched', and 'untouched' classes depending on the state of your input.")]), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('prism-code', [_vm._v("\nconst options = {\n  inputClasses: {\n    valid: 'my-valid',\n    invalid: 'my-invalid'\n  }\n}\n\nVue.use(Validity, options)\n      ")])], 1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "playground"
     }
-  }, [_c('h2', [_vm._v("Playground")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('form', {
+  }, [_c('h2', [_vm._v("Playground")]), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('form', {
     on: {
       "submit": function($event) {
         $event.preventDefault();
@@ -1431,6 +1435,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Custom validators")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
+      "href": "#dynamic-validation"
+    }
+  }, [_vm._v("Dynamic validation")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
       "href": "#validate-custom-components"
     }
   }, [_vm._v("Validate custom components")])]), _vm._v(" "), _c('li', [_c('a', {
@@ -1454,6 +1462,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#custom-validators"
     }
   }, [_vm._v("Custom validators")]), _vm._v(" section to read more about this.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Sometimes you want to have one field's validation depend on another field's validation state. Let's say I only want you to fill in a referrer if you selected 'Other' as how you were referred. You actually have access to the "), _c('code', [_vm._v("parentVm")]), _vm._v(" as the third parameter in both the message and validate methods. The "), _c('code', [_vm._v("parentVm")]), _vm._v(" is a reference to the parent component. So you can access properties on it as you could from the component itself and it will automatically react to those changes! In the example below, `referrerType` is data, or perhaps a computed property, on the component with which we are in.")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', [_vm._v("Often you find yourself in situations where you want to abstract a certain input field into its own component, either to be shared, or because it has its own set of complex logic that would serve a better purpose in its own component. "), _c('code', [_vm._v("vue-validity")]), _vm._v(" makes this easy, so long as you are using the "), _c('a', {
     attrs: {

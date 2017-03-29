@@ -26,6 +26,7 @@
         <li><a href="#display-error-messages">Display error messages</a></li>
         <li><a href="#custom-error-messages">Custom error messages</a></li>
         <li><a href="#custom-validators">Custom validators</a></li>
+        <li><a href="#dynamic-validation">Dynamic validation</a></li>
         <li><a href="#validate-custom-components">Validate custom components</a></li>
         <li><a href="#manually-add-errors">Manually add errors</a></li>
         <li><a href="#input-classes">Input classes</a></li>
@@ -155,13 +156,33 @@ validations: {
 }
       </prism-code>
     </div>
+    <div id="dynamic-validation">
+      <h2>Dynamic validation</h2>
+      <p>Sometimes you want to have one field's validation depend on another field's validation state. Let's say I only want you to fill in a referrer if you selected 'Other' as how you were referred. You actually have access to the <code>parentVm</code> as the third parameter in both the message and validate methods. The <code>parentVm</code> is a reference to the parent component. So you can access properties on it as you could from the component itself and it will automatically react to those changes! In the example below, `referrerType` is data, or perhaps a computed property, on the component with which we are in.</p>
+      <prism-code>Validity.extend('referrer', {
+  message (field, val, parentVm) {
+    return 'Please enter a referrer!'
+  },
+  validate (field, val, parentVm) {
+    // If the referrer type is 'other',
+    // then we want to return the truthiness
+    // of the current field. Otherwise, just
+    // return true because it is valid.
+    if (parentVm.referrerType === 'other') {
+      return !!(field)
+    }
+
+    return true
+  }
+})</prism-code>
+    </div>
     <div id="validate-custom-components">
       <h2>Validate custom components</h2>
       <p>Often you find yourself in situations where you want to abstract a certain input field into its own component, either to be shared, or because it has its own set of complex logic that would serve a better purpose in its own component. <code>vue-validity</code> makes this easy, so long as you are using the <a href="https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events"><code>v-model</code> pattern</a> for the custom component.</p>
       <prism-code language="html">{{ parentCustomComponent }}</prism-code>
       <prism-code>
 new Vue({
-  data() {
+  data () {
     return {
       form: {
         username: '',
