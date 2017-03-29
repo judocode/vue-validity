@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="error-messages">
     <div class="error" v-for="error in model.$errors">
       {{ error.message }}
     </div>
@@ -13,6 +13,14 @@ export default {
 </script>
 
 <style>
+.error-messages {
+  display: none;
+}
+
+.invalid.touched + .error-messages {
+  display: block;
+}
+
 .error {
   color: red;
 }

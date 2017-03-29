@@ -23,7 +23,7 @@ export default {
 
 <style>
 .prism-code {
-  font-size: 24px;
+  font-size: 18px;
   overflow: auto;
 }
 </style>

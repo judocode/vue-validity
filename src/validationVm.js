@@ -108,7 +108,7 @@ const defaultComputed = {
     return !!(this.$dirty && !this.$valid)
   },
   $errors () {
-    if (!this.$error) {
+    if (this.$valid) {
       return []
     }
 

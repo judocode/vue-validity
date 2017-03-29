@@ -1,7 +1,10 @@
 <template>
+
   <div id="app" class="app">
     <div id="intro" class="intro">
       <h1>vue-validity</h1>
+        <a href="https://github.com/jrenton/vue-validity"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+        <a class="github-button" href="https://github.com/jrenton/vue-validity" data-icon="octicon-star" data-style="mega" data-count-href="/jrenton/vue-validity/stargazers" data-count-api="/repos/jrenton/vue-validity#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star jrenton/vue-validity on GitHub">View on Github</a>
       <h4>A simple, powerful and flexible Vue.js validation library.</h4>
       <h3>Features</h3>
       <ul class="text-left">
@@ -28,7 +31,7 @@
         <li><a href="#input-classes">Input classes</a></li>
         <li><a href="#playground">Playground</a></li>
       </ul>
-    <div>
+    </div>
     <div id="installation">
       <h2>Installation</h2>
       <prism-code>npm install --save vue-validity</prism-code>
@@ -261,9 +264,9 @@ Vue.use(Validity, options)
       <p>Experiment with <code>vue-validity</code> here!</p>
       <form @submit.prevent="submitForm">
         <h3>Example form</h3>
-        <input type="text" v-model="match.firstName" placeholder="First name" v-validity>
+        <input type="text" v-model="match.firstName" placeholder="First name" v-validity />
         <error-messages :model="$v.match.firstName"></error-messages>
-        <input type="text" v-model="match.lastName" placeholder="Last name" v-validity>
+        <input type="text" v-model="match.lastName" placeholder="Last name" v-validity />
         <error-messages :model="$v.match.lastName"></error-messages>
         <hello v-model="match.message" class="border-gray"></hello>
         <complex-child :login="login" class="border-gray"></complex-child>
@@ -278,7 +281,7 @@ Vue.use(Validity, options)
         <p v-if="isSuccessfulForm && hasSubmittedForm && !isSubmittingForm">Success!</p>
         <p v-if="!isSuccessfulForm && hasSubmittedForm && !isSubmittingForm">Fail!</p>
         <h5>Validation state:</h5>
-        <pre class="text-left">$v: {{ $v }}</prism-code>
+        <pre class="text-left">$v: {{ $v }}</pre>
       </form>
     </div>
   </div>
@@ -417,6 +420,7 @@ input {
   border: 1px solid #ccc;
   outline: 0;
   font-size: inherit;
+  display: block;
 }
 
 input.touched.invalid {

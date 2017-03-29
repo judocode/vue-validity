@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
-    <h4>Child component in form using v-model</a>
+    <h4>Child component in form using v-model</h4>
     <div>
-      <input type="text" placeholder="Message" :value="value" @input="onInput($event.target.value)" v-validity>
+      <input type="text" placeholder="Message" :value="value" @input="onInput($event.target.value)" v-validity />
+      <error-messages :model="$v"></error-messages>
     </div>
-    <error-messages :model="$v"></error-messages>
   </div>
 </template>
 
@@ -26,7 +26,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
