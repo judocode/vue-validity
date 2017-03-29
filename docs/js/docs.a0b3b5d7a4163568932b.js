@@ -8,7 +8,7 @@
 	else
 		root["docs"] = factory();
 })(this, function() {
-return webpackJsonp_name_([1,2],[
+return webpackJsonp_name_([1],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -30,7 +30,7 @@ return webpackJsonp_name_([1,2],[
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
 /* harmony export (immutable) */ __webpack_exports__["a"] = getObjectByString;
 /* unused harmony export hasClass */
@@ -127,7 +127,7 @@ var flatten = function flatten(arr) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   required: '{field} is required.',
   minlength: '{field} should be at least {minlength} chars.',
 
@@ -161,7 +161,7 @@ var flatten = function flatten(arr) {
 
     return error;
   }
-};
+});
 
 /***/ }),
 /* 19 */,
@@ -183,13 +183,13 @@ var flatten = function flatten(arr) {
 
 
 /* styles */
-__webpack_require__(100)
+__webpack_require__(101)
 
 var Component = __webpack_require__(11)(
   /* script */
-  __webpack_require__(57),
+  __webpack_require__(58),
   /* template */
-  __webpack_require__(108),
+  __webpack_require__(109),
   /* scopeId */
   null,
   /* cssModules */
@@ -206,13 +206,13 @@ module.exports = Component.exports
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__required__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minlength__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__required__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__minlength__ = __webpack_require__(54);
 
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   required: __WEBPACK_IMPORTED_MODULE_1__required__["a" /* default */],
   minlength: __WEBPACK_IMPORTED_MODULE_2__minlength__["a" /* default */],
 
@@ -224,7 +224,7 @@ module.exports = Component.exports
 
     this[name] = validator;
   }
-};
+});
 
 /***/ }),
 /* 35 */,
@@ -245,8 +245,8 @@ module.exports = Component.exports
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directive__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixin__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directive__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixin__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validators_index__ = __webpack_require__(34);
 /* unused harmony reexport validationMixin */
@@ -291,7 +291,7 @@ __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_keys___default()(__WEBP
 var getErrorMessage = __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__["a" /* default */].getErrorMessage;
 
 
-/* harmony default export */ __webpack_exports__["a"] = VueValidity;
+/* harmony default export */ __webpack_exports__["a"] = (VueValidity);
 
 /***/ }),
 /* 48 */
@@ -299,13 +299,13 @@ var getErrorMessage = __WEBPACK_IMPORTED_MODULE_3__validators_errorMessages__["a
 
 
 /* styles */
-__webpack_require__(99)
+__webpack_require__(100)
 
 var Component = __webpack_require__(11)(
   /* script */
-  __webpack_require__(55),
+  __webpack_require__(56),
   /* template */
-  __webpack_require__(107),
+  __webpack_require__(108),
   /* scopeId */
   null,
   /* cssModules */
@@ -318,6 +318,51 @@ module.exports = Component.exports
 /***/ }),
 /* 49 */,
 /* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_index__ = __webpack_require__(47);
+
+
+
+
+const validityConfig = {
+  directiveName: 'validity',
+  inputClasses: {
+    touched: 'touched',
+    untouched: 'untouched',
+    valid: 'valid',
+    invalid: 'invalid'
+  },
+  errorMessages: {
+    required: '{field} is required????'
+  }
+}
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2__src_index__["a" /* default */], validityConfig)
+
+__WEBPACK_IMPORTED_MODULE_2__src_index__["a" /* default */].extend('required', {
+  message (field) {
+    // This overrides the message for required,
+    // but keeps its validation.
+    return `${field} is required, dude(tte)`
+  }
+})
+
+/* eslint-disable no-new */
+new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+  el: '#app',
+  render: h => h(__WEBPACK_IMPORTED_MODULE_1__App___default.a)
+})
+
+
+/***/ }),
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -335,7 +380,7 @@ var defaultClassNames = {
   pristine: 'pristine',
   dirty: 'dirty' };
 
-/* harmony default export */ __webpack_exports__["a"] = function (inputClasses) {
+/* harmony default export */ __webpack_exports__["a"] = (function (inputClasses) {
   return {
     bind: function bind(el, binding, vnode) {
       setPristine(el, inputClasses);
@@ -363,7 +408,7 @@ var defaultClassNames = {
       addClasses(el, binding, vnode, inputClasses);
     }
   };
-};
+});
 
 function setDirty(el, classNames) {
   classNames = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, defaultClassNames, classNames);
@@ -453,16 +498,16 @@ function addClasses(el, binding, vnode) {
 }
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validationVm__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validationVm__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_index__ = __webpack_require__(17);
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   beforeCreate: function beforeCreate() {
     var _this = this;
 
@@ -501,16 +546,16 @@ function addClasses(el, binding, vnode) {
       }
     }
   }
-};
+});
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_define_properties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_keys__);
@@ -630,7 +675,7 @@ var defaultComputed = {
   $errors: function $errors() {
     var _this2 = this;
 
-    if (!this.$error) {
+    if (this.$valid) {
       return [];
     }
 
@@ -808,14 +853,14 @@ var validateModel = function validateModel(model, validations) {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(18);
 
 
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   options: [{
     name: 'minlength',
     value: 0
@@ -833,17 +878,17 @@ var validateModel = function validateModel(model, validations) {
   message: function message(field, options, parentVm) {
     return __WEBPACK_IMPORTED_MODULE_0__errorMessages__["a" /* default */].getErrorMessage('minlength', field, options);
   }
-};
+});
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorMessages__ = __webpack_require__(18);
 
 
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   validate: function validate(value, options, parentVm) {
     if (Array.isArray(value)) return !!value.length;
 
@@ -852,21 +897,21 @@ var validateModel = function validateModel(model, validations) {
   message: function message(field, val) {
     return __WEBPACK_IMPORTED_MODULE_0__errorMessages__["a" /* default */].getErrorMessage('required', field, val);
   }
-};
+});
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Hello_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Hello_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ErrorMessages_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ComplexChild_vue__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ComplexChild_vue__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ComplexChild_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ComplexChild_vue__);
 
 
@@ -875,7 +920,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app',
 
   data: function data() {
@@ -954,10 +999,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     PrismCode: __WEBPACK_IMPORTED_MODULE_2__components_PrismCode_vue___default.a,
     ComplexChild: __WEBPACK_IMPORTED_MODULE_3__components_ComplexChild_vue___default.a
   }
-};
+});
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -968,7 +1013,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   validatable: true,
 
   props: ['login'],
@@ -976,22 +1021,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     ErrorMessages: __WEBPACK_IMPORTED_MODULE_0__ErrorMessages___default.a
   }
-};
+});
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   props: ['model']
-};
+});
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1002,7 +1047,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   props: ['value'],
   methods: {
@@ -1014,21 +1059,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     ErrorMessages: __WEBPACK_IMPORTED_MODULE_0__ErrorMessages_vue___default.a
   }
-};
+});
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prismjs__);
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     language: {
       type: String,
@@ -1041,10 +1086,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     this.$refs.prism.innerHTML = __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.highlight(code, __WEBPACK_IMPORTED_MODULE_0_prismjs___default.a.languages[this.language]);
   }
-};
+});
 
 /***/ }),
-/* 60 */,
 /* 61 */,
 /* 62 */,
 /* 63 */,
@@ -1083,12 +1127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 96 */,
 /* 97 */,
 /* 98 */,
-/* 99 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 99 */,
 /* 100 */
 /***/ (function(module, exports) {
 
@@ -1107,39 +1146,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 103 */,
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 103 */
+/***/ (function(module, exports) {
 
-var Component = __webpack_require__(11)(
-  /* script */
-  __webpack_require__(56),
-  /* template */
-  __webpack_require__(109),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
+/* 104 */,
 /* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(101)
-
 var Component = __webpack_require__(11)(
   /* script */
-  __webpack_require__(58),
+  __webpack_require__(57),
   /* template */
   __webpack_require__(110),
   /* scopeId */
-  "data-v-4c68cce8",
+  null,
   /* cssModules */
   null
 )
@@ -1161,7 +1184,7 @@ var Component = __webpack_require__(11)(
   /* template */
   __webpack_require__(111),
   /* scopeId */
-  null,
+  "data-v-4c68cce8",
   /* cssModules */
   null
 )
@@ -1171,6 +1194,28 @@ module.exports = Component.exports
 
 /***/ }),
 /* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(103)
+
+var Component = __webpack_require__(11)(
+  /* script */
+  __webpack_require__(60),
+  /* template */
+  __webpack_require__(112),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 108 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1179,9 +1224,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "app"
     }
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "navigation"
-  }, [_c('h3', [_vm._v("Navigation")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     attrs: {
       "id": "installation"
     }
@@ -1263,7 +1306,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "First name"
     },
     domProps: {
-      "value": _vm._s(_vm.match.firstName)
+      "value": (_vm.match.firstName)
     },
     on: {
       "input": function($event) {
@@ -1290,7 +1333,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Last name"
     },
     domProps: {
-      "value": _vm._s(_vm.match.lastName)
+      "value": (_vm.match.lastName)
     },
     on: {
       "input": function($event) {
@@ -1303,20 +1346,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "model": _vm.$v.match.lastName
     }
   }), _vm._v(" "), _c('hello', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.match.message),
-      expression: "match.message"
-    }],
     staticClass: "border-gray",
-    domProps: {
-      "value": (_vm.match.message)
-    },
-    on: {
-      "input": function($event) {
-        _vm.match.message = $event
-      }
+    model: {
+      value: (_vm.match.message),
+      callback: function($$v) {
+        _vm.match.message = $$v
+      },
+      expression: "match.message"
     }
   }), _vm._v(" "), _c('complex-child', {
     staticClass: "border-gray",
@@ -1329,18 +1365,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.isSubmittingForm) ? [_vm._v("\n            Please wait...\n          ")] : [_vm._v("\n            Submit\n          ")]], 2), _vm._v(" "), (_vm.isSuccessfulForm && _vm.hasSubmittedForm && !_vm.isSubmittingForm) ? _c('p', [_vm._v("Success!")]) : _vm._e(), _vm._v(" "), (!_vm.isSuccessfulForm && _vm.hasSubmittedForm && !_vm.isSubmittingForm) ? _c('p', [_vm._v("Fail!")]) : _vm._e(), _vm._v(" "), _c('h5', [_vm._v("Validation state:")]), _vm._v(" "), _c('pre', {
     staticClass: "text-left"
-  }, [_vm._v("$v: " + _vm._s(_vm.$v)), _vm._v("\n      ")])], 1)])])])])
+  }, [_vm._v("$v: " + _vm._s(_vm.$v))])], 1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "intro",
     attrs: {
       "id": "intro"
     }
-  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('h3', [_vm._v("Features")]), _vm._v(" "), _c('ul', {
+  }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://github.com/jrenton/vue-validity"
+    }
+  }, [_c('img', {
+    staticStyle: {
+      "position": "fixed",
+      "top": "0",
+      "right": "0",
+      "border": "0"
+    },
+    attrs: {
+      "src": "https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67",
+      "alt": "Fork me on GitHub",
+      "data-canonical-src": "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "github-button",
+    attrs: {
+      "href": "https://github.com/jrenton/vue-validity",
+      "data-icon": "octicon-star",
+      "data-style": "mega",
+      "data-count-href": "/jrenton/vue-validity/stargazers",
+      "data-count-api": "/repos/jrenton/vue-validity#stargazers_count",
+      "data-count-aria-label": "# stargazers on GitHub",
+      "aria-label": "Star jrenton/vue-validity on GitHub"
+    }
+  }, [_vm._v("View on Github")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('h3', [_vm._v("Features")]), _vm._v(" "), _c('ul', {
     staticClass: "text-left"
   }, [_c('li', [_vm._v("Model-based validation")]), _vm._v(" "), _c('li', [_vm._v("Automatically adds classes based on input state")]), _vm._v(" "), _c('li', [_vm._v("Programmatically add errors (eg. server-side errors)")]), _vm._v(" "), _c('li', [_vm._v("Validate custom components")]), _vm._v(" "), _c('li', [_vm._v("Add your own translations")]), _vm._v(" "), _c('li', [_vm._v("Create your own custom validations")]), _vm._v(" "), _c('li', [_vm._v("Extend existing validations")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', [_c('li', [_c('a', {
+  return _c('div', {
+    staticClass: "navigation"
+  }, [_c('h3', [_vm._v("Navigation")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
     attrs: {
       "href": "#intro"
     }
@@ -1380,7 +1445,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#playground"
     }
-  }, [_vm._v("Playground")])])])
+  }, [_vm._v("Playground")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', [_vm._v("A validation library is not all that useful without being able to provide us with error messages that relate to a given field. Luckily, "), _c('code', [_vm._v("vue-validity")]), _vm._v(" makes this very easy! As you can see in the validations object above, we have access to "), _c('code', [_vm._v("$errors")]), _vm._v(" on each property.")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1410,11 +1475,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.model.$errors), function(error) {
+  return _c('div', {
+    staticClass: "error-messages"
+  }, _vm._l((_vm.model.$errors), function(error) {
     return _c('div', {
       staticClass: "error"
     }, [_vm._v("\n    " + _vm._s(error.message) + "\n  ")])
@@ -1422,7 +1489,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1441,7 +1508,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Username"
     },
     domProps: {
-      "value": _vm._s(_vm.login.username)
+      "value": (_vm.login.username)
     },
     on: {
       "input": function($event) {
@@ -1468,7 +1535,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Password"
     },
     domProps: {
-      "value": _vm._s(_vm.login.password)
+      "value": (_vm.login.password)
     },
     on: {
       "input": function($event) {
@@ -1484,13 +1551,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "hello"
-  }, [_c('h4', [_vm._v("Child component in form using v-model"), _vm._v(" "), _c('div', [_c('input', {
+  }, [_c('h4', [_vm._v("Child component in form using v-model")]), _vm._v(" "), _c('div', [_c('input', {
     directives: [{
       name: "validity",
       rawName: "v-validity"
@@ -1507,7 +1574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.onInput($event.target.value)
       }
     }
-  })]), _vm._v(" "), _c('error-messages', {
+  }), _vm._v(" "), _c('error-messages', {
     attrs: {
       "model": _vm.$v
     }
@@ -1515,7 +1582,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1525,52 +1592,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._t("default")], 2)
 },staticRenderFns: []}
 
-/***/ }),
-/* 112 */,
-/* 113 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_index__ = __webpack_require__(47);
-
-
-
-
-const validityConfig = {
-  directiveName: 'validity',
-  inputClasses: {
-    touched: 'touched',
-    untouched: 'untouched',
-    valid: 'valid',
-    invalid: 'invalid'
-  },
-  errorMessages: {
-    required: '{field} is required????'
-  }
-}
-
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2__src_index__["a" /* default */], validityConfig)
-
-__WEBPACK_IMPORTED_MODULE_2__src_index__["a" /* default */].extend('required', {
-  message (field) {
-    // This overrides the message for required,
-    // but keeps its validation.
-    return `${field} is required, dude(tte)`
-  }
-})
-
-/* eslint-disable no-new */
-new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: '#app',
-  render: h => h(__WEBPACK_IMPORTED_MODULE_1__App___default.a)
-})
-
-
 /***/ })
-],[113]);
+],[50]);
 });

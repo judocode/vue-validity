@@ -145,6 +145,7 @@ input {
   border: 1px solid #ccc;
   outline: 0;
   font-size: inherit;
+  display: block;
 }
 input.touched.invalid {
   border: 1px solid red;
@@ -172,11 +173,17 @@ a[data-v-4c68cce8] {
   color: #42b983;
 }
 
+.error-messages {
+  display: none;
+}
+.invalid.touched + .error-messages {
+  display: block;
+}
 .error {
   color: red;
 }
 
 .prism-code {
-  font-size: 24px;
+  font-size: 18px;
   overflow: auto;
 }

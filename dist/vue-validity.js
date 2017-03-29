@@ -418,7 +418,7 @@ var defaultComputed = {
   $errors: function $errors() {
     var _this2 = this;
 
-    if (!this.$error) {
+    if (this.$valid) {
       return [];
     }
 
