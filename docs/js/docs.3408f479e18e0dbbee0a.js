@@ -1378,7 +1378,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('h1', [_vm._v("vue-validity")]), _vm._v(" "), _c('a', {
     attrs: {
-      "href": "https://github.com/jrenton/vue-validity"
+      "href": "https://github.com/judocode/vue-validity"
     }
   }, [_c('img', {
     staticStyle: {
@@ -1395,13 +1395,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _vm._v(" "), _c('a', {
     staticClass: "github-button",
     attrs: {
-      "href": "https://github.com/jrenton/vue-validity",
+      "href": "https://github.com/judocode/vue-validity",
       "data-icon": "octicon-star",
       "data-style": "mega",
-      "data-count-href": "/jrenton/vue-validity/stargazers",
-      "data-count-api": "/repos/jrenton/vue-validity#stargazers_count",
+      "data-count-href": "/judocode/vue-validity/stargazers",
+      "data-count-api": "/repos/judocode/vue-validity#stargazers_count",
       "data-count-aria-label": "# stargazers on GitHub",
-      "aria-label": "Star jrenton/vue-validity on GitHub"
+      "aria-label": "Star judocode/vue-validity on GitHub"
     }
   }, [_vm._v("View on Github")]), _vm._v(" "), _c('h4', [_vm._v("A simple, powerful and flexible Vue.js validation library.")]), _vm._v(" "), _c('h3', [_vm._v("Features")]), _vm._v(" "), _c('ul', {
     staticClass: "text-left"

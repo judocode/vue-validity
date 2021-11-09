@@ -2,7 +2,7 @@
   "name": "vue-validity",
   "version": "0.2.0",
   "description": "Simple, powerful and flexible model-based Vue.js validation library",
-  "author": "Justus <jrenton87@gmail.com>",
+  "author": "Justus",
   "license": "MIT",
   "main": "dist/vue-validity.min.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jrenton/vue-validity"
+    "url": "git+https://github.com/judocode/vue-validity"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -98,7 +98,7 @@
     "validity"
   ],
   "bugs": {
-    "url": "https://github.com/jrenton/vue-validity/issues"
+    "url": "https://github.com/judocode/vue-validity/issues"
   },
-  "homepage": "https://github.com/jrenton/vue-validity/blob/master/README.md"
+  "homepage": "https://github.com/judocode/vue-validity/blob/master/README.md"
 }

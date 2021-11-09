@@ -74,7 +74,7 @@ $v: {
 }
 ```
 
-Checkout the docs for more examples: [https://jrenton.github.io/vue-validity/](https://jrenton.github.io/vue-validity/)
+Checkout the docs for more examples: [https://judocode.github.io/vue-validity/](https://judocode.github.io/vue-validity/)
 
 ## Contributing
 
